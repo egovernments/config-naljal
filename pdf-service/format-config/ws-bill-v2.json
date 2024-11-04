@@ -478,7 +478,7 @@
                               ],
                               "style": "receipt-table-value"
                             }
-                          ],
+                          ],                        
                           [
                             { "text": "{{current_penalty}} {{fromPeriod}}-{{toPeriod}}",
                               "border": [
