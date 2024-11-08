@@ -180,7 +180,7 @@
                   "module": "mgramseva-common"
                 }
               },
-              {
+		    {
                 "variable": "total_bill_amount",
                 "value": {
                   "path": "PDF_STATIC_LABEL_WATER_TOTAL_BILL_AMOUNT"
@@ -192,7 +192,7 @@
                   "module": "mgramseva-common"
                 }
               },
-              {
+               {
                 "variable": "advance_adjusted_amount",
                 "value": {
                   "path": "PDF_STATIC_LABEL_WATER_ADVANCE_ADJUSTED_AMOUNT"
@@ -216,7 +216,7 @@
                   "module": "mgramseva-common"
                 }
               },
-              {
+		        {
                 "variable": "penalty_after_due_date",
                 "value": {
                   "path": "PDF_STATIC_LABEL_WATER_PENALTY_AFTER_DUE_DATE"
@@ -228,7 +228,7 @@
                   "module": "mgramseva-common"
                 }
               },
-              {
+		         {
                 "variable": "net_amount_due_with_penalty",
                 "value": {
                   "path": "PDF_STATIC_LABEL_WATER_NET_AMOUNT_DUE_WITH_PENALTY"
@@ -492,7 +492,7 @@
                   "module": "mgramseva-common"
                 }
               },
-              {
+               {
                 "variable": "GPWSC",
                 "value": {
                   "path": "$.tenantId"
@@ -533,7 +533,7 @@
                   "path": "$.billDetails"
                 },
                 "type":"function",
-                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return (((new Date(x[0].fromPeriod+19800000).getDate())<10?'0'+new Date(x[0].fromPeriod+19800000).getDate():new Date(x[0].fromPeriod+19800000).getDate())+'/'+((new Date(x[0].fromPeriod+19800000).getMonth()+1)<10?'0'+(new Date(x[0].fromPeriod+19800000).getMonth()+1):(new Date(x[0].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].fromPeriod+19800000).getFullYear())"
+                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return (((new Date(x[0].fromPeriod+19800000).getDate())<10?'0'+new Date(x[0].fromPeriod+19800000).getDate():new Date(x[0].fromPeriod+19800000).getDate())+'/'+((new Date(x[0].fromPeriod+19800000).getMonth()+1)<10?'0'+(new Date(x[0].fromPeriod+19800000).getMonth()+1):(new Date(x[0].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].fromPeriod+19800000).getFullYear())" 
               },
               {
                 "variable": "toPeriod",
@@ -541,7 +541,7 @@
                   "path": "$.billDetails"
                 },
                 "type":"function",
-                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.toPeriod - a.toPeriod}); return (((new Date(x[0].toPeriod+19800000).getDate())<10?('0'+new Date(x[0].toPeriod+19800000).getDate()):new Date(x[0].toPeriod+19800000).getDate())+'/'+((new Date(x[0].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[0].toPeriod+19800000).getMonth()+1)):(new Date(x[0].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].toPeriod+19800000).getFullYear())"
+                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.toPeriod - a.toPeriod}); return (((new Date(x[0].toPeriod+19800000).getDate())<10?('0'+new Date(x[0].toPeriod+19800000).getDate()):new Date(x[0].toPeriod+19800000).getDate())+'/'+((new Date(x[0].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[0].toPeriod+19800000).getMonth()+1)):(new Date(x[0].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].toPeriod+19800000).getFullYear())" 
               },
               {
                 "variable": "billIssueDate",
@@ -611,24 +611,24 @@
               {
                 "variable": "totalArrears",
                 "value": {
-                  "path":"$.billDetails"
+                     "path":"$.billDetails"                              
                 },
                 "type":"function",
-                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod});for( var i=1;i<x.length;i++){y=y+x[i].amount;} return y;"
+                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod});for( var i=1;i<x.length;i++){y=y+x[i].amount;} return y;" 
               },{
                 "variable": "arrears",
                 "value": {
-                  "path":"$.billDetails"
+                     "path":"$.billDetails"                              
                 },
                 "type":"function",
-                "format":"var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod});for( var i=1;i<x.length;i++){ x[i].amount=x[i].amount<0?0:x[i].amount; y.push({'text':(((new Date(x[i].fromPeriod+19800000).getDate())<10?('0'+new Date(x[i].fromPeriod+19800000).getDate()):new Date(x[i].fromPeriod+19800000).getDate())+'/'+((new Date(x[i].fromPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].fromPeriod+19800000).getMonth()+1)):(new Date(x[i].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].fromPeriod+19800000).getFullYear())+' - '+(((new Date(x[i].toPeriod+19800000).getDate())<10?('0'+new Date(x[i].toPeriod+19800000).getDate()):new Date(x[i].toPeriod).getDate())+'/'+((new Date(x[i].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].toPeriod+19800000).getMonth()+1)):(new Date(x[i].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].toPeriod+19800000).getFullYear()),'value':'₹  '+x[i].amount});} return y;"
+                "format":"var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod});for( var i=1;i<x.length;i++){ x[i].amount=x[i].amount<0?0:x[i].amount; y.push({'text':(((new Date(x[i].fromPeriod+19800000).getDate())<10?('0'+new Date(x[i].fromPeriod+19800000).getDate()):new Date(x[i].fromPeriod+19800000).getDate())+'/'+((new Date(x[i].fromPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].fromPeriod+19800000).getMonth()+1)):(new Date(x[i].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].fromPeriod+19800000).getFullYear())+' - '+(((new Date(x[i].toPeriod+19800000).getDate())<10?('0'+new Date(x[i].toPeriod+19800000).getDate()):new Date(x[i].toPeriod).getDate())+'/'+((new Date(x[i].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].toPeriod+19800000).getMonth()+1)):(new Date(x[i].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].toPeriod+19800000).getFullYear()),'value':'₹  '+x[i].amount});} return y;" 
               },{
                 "variable": "ws_charge",
                 "value": {
-                  "path":"$.billDetails"
+                     "path":"$.billDetails"                              
                 },
                 "type":"function",
-                "format":"var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return x[0].amount;"
+                "format":"var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return x[0].amount;" 
               }
             ]
           },
@@ -638,46 +638,46 @@
                 "variable":"waterquality_rate_value",
                 "formula":"'{{waterquality_rate}}'=='NA'? 'NA' : '{{waterquality_rate}}/5'"
               },{
-                "variable":"watersupply_rate_value",
-                "formula":"('{{watersupply_rate}}' =='NA' || {{watersupply_rate}} ==0 )? 'NA' : '{{watersupply_rate}}/5'"
-              },{
-                "variable":"supplyregula_rate_value",
-                "formula":"'{{supplyregula_rate}}'=='NA' ? 'NA' : '{{supplyregula_rate}}/5'"
-              },
+               "variable":"watersupply_rate_value",
+               "formula":"('{{watersupply_rate}}' =='NA' || {{watersupply_rate}} ==0 )? 'NA' : '{{watersupply_rate}}/5'"
+             },{
+               "variable":"supplyregula_rate_value",
+               "formula":"'{{supplyregula_rate}}'=='NA' ? 'NA' : '{{supplyregula_rate}}/5'"
+             },
               {
-                "variable":"address",
-                "formula":"['{{doorHouseNo}}', '{{streetName}}', '{{mohalla}}'].filter(x=>x != 'NA').join(', ')"
-              },
+              "variable":"address",
+              "formula":"['{{doorHouseNo}}', '{{streetName}}', '{{mohalla}}'].filter(x=>x != 'NA').join(', ')"
+            },
               {
-                "variable":"advanceAdjustedAmount",
-                "formula":"{{advanceAdjustedAmountOneTax}}=={{advanceAdjustedAmountOne}}?0:{{advanceAdjustedAmountOne}}-{{advanceAdjustedAmountTwo}}"
-              },
-              {
-                "variable":"ws_charge_amt",
-                "formula":"{{ws_charge}}==0.00?-{{advanceAdjustedAmount}}:{{ws_charge}}"
-              },
-              {
-                "variable":"totalArrear",
-                "formula":"{{totalArrears}}<0?0:{{totalArrears}}"
-              },
-              {
-                "variable":"totalBillAmount",
-                "formula":"{{ws_charge_amt}} + {{totalArrear}}"
-              },
-              {
-                "variable":"netAmountDue",
-                "formula":"{{totalBillAmount}}+{{advanceAdjustedAmount}}"
-              },
-              {
-                "variable":"netAmountDueWithPenalty",
-                "formula":"{{netAmountDue}}+{{totalApplicablePenalty}}"
-              },
-              {
-                "variable":"penaltyDueDate",
-                "formula":"{{billExpiry}}+{{demandIssuedDate}}",
-                "type":"date"
-              }
-
+            "variable":"advanceAdjustedAmount",
+            "formula":"{{advanceAdjustedAmountOneTax}}=={{advanceAdjustedAmountOne}}?0:{{advanceAdjustedAmountOne}}-{{advanceAdjustedAmountTwo}}"
+          },
+		    {
+            "variable":"ws_charge_amt",
+            "formula":"{{ws_charge}}==0.00?-{{advanceAdjustedAmount}}:{{ws_charge}}"
+          },
+		    {
+            "variable":"totalArrear",
+            "formula":"{{totalArrears}}<0?0:{{totalArrears}}"
+          },
+		    {
+            "variable":"totalBillAmount",
+            "formula":"{{ws_charge_amt}} + {{totalArrear}}"
+          },
+        {
+                  "variable":"netAmountDue",
+                  "formula":"{{totalBillAmount}}+{{advanceAdjustedAmount}}"
+                },
+        {
+                  "variable":"netAmountDueWithPenalty",
+                  "formula":"{{netAmountDue}}+{{totalApplicablePenalty}}"
+                },
+		    {
+                  "variable":"penaltyDueDate",
+                  "formula":"{{billExpiry}}+{{demandIssuedDate}}",
+		"type":"date"
+                }
+		    
             ]
           },
           {
@@ -704,9 +704,9 @@
                     "value":"$.MdmsRes.tenant.tenants[0].emailId"
                   },
                   {
-                    "variable": "logoImage",
+                    "variable": "logoImage",                        
                     "value":"$.MdmsRes.tenant.tenants[0].logoId",
-                    "type":"image"
+                    "type":"image"      
                   },
                   {
                     "variable": "logo-header",
@@ -734,7 +734,7 @@
                       "required":true,
                       "prefix": "WS",
                       "module":"mgramseva-common"
-                    }
+                      }
                   },{
                     "variable": "payerName",
                     "value": "$.WaterConnection[(@.length-1)].connectionHolders[0].name"
@@ -859,7 +859,6 @@
                     "variable": "previousMonthYear",
                     "value": "$.LastMonthSummary.previousMonthYear"
                   }
-
                 ]
               }
             ]
