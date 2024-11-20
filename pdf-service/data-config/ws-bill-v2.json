@@ -1,17 +1,18 @@
 {
-  "key": "ws-receipt-nm",
+  "key": "ws-bill-v2",
   "DataConfigs": {
     "serviceName": "mgramseva-common",
     "version": "1.0.0",
-    "baseKeyPath": "$.Payments.*",
-    "entityIdPath": "$.id",
+    "baseKeyPath": "$.BillAndDemand",
+    "entityIdPath": "$.Bill[0].billNumber",
     "isCommonTableBorderRequired": true,
     "mappings": [
       {
         "topic": "common-pdf-generation-1",
         "mappings": [
           {
-            "direct": [
+            "direct":
+            [
               {
                 "variable": "gpwsc_name",
                 "value": {
@@ -52,18 +53,6 @@
                 "variable": "consumer_mobileno",
                 "value": {
                   "path": "PDF_STATIC_LABEL_WATER_BILL_CONSUMER_MOBILE_NO"
-                },
-                "type": "label",
-                "localisation": {
-                  "required": true,
-                  "prefix": null,
-                  "module": "mgramseva-common"
-                }
-              },
-              {
-                "variable": "current_penalty",
-                "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_CURRENT_PENALTY"
                 },
                 "type": "label",
                 "localisation": {
@@ -133,9 +122,9 @@
                 }
               },
               {
-                "variable": "receipt_id",
+                "variable": "bill_id",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_RECEIPT_ID"
+                  "path": "PDF_STATIC_LABEL_WATER_BILL_ID"
                 },
                 "type": "label",
                 "localisation": {
@@ -145,9 +134,9 @@
                 }
               },
               {
-                "variable": "receipt_period",
+                "variable": "bill_period",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_RECEIPT_PERIOD"
+                  "path": "PDF_STATIC_LABEL_WATER_BILL_PERIOD"
                 },
                 "type": "label",
                 "localisation": {
@@ -157,9 +146,9 @@
                 }
               },
               {
-                "variable": "receipt_issue_date",
+                "variable": "bill_issue_date",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_BILL_RECEIPT_DATE"
+                  "path": "PDF_STATIC_LABEL_WATER_BILL_ISSUE_DATE"
                 },
                 "type": "label",
                 "localisation": {
@@ -169,9 +158,21 @@
                 }
               },
               {
-                "variable": "payment_mode",
+                "variable": "latest_demand_generated_date",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_PAYMENT_MODE"
+                  "path": "PDF_STATIC_LABEL_LATEST_DEMAND_GENERATED_DATE"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "mgramseva-common"
+                }
+              },
+              {
+                "variable": "latest_penalty_created_date",
+                "value": {
+                  "path": "PDF_STATIC_LABEL_LATEST_DEMAND_CREATED_DATE"
                 },
                 "type": "label",
                 "localisation": {
@@ -192,6 +193,18 @@
                   "module": "mgramseva-common"
                 }
               },
+              {
+                "variable": "water_charges_roundoff",
+                "value": {
+                  "path": "PDF_STATIC_LABEL_WATER_CHARGES_ROUNDOFF"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "mgramseva-common"
+                }
+              },              
               {
                 "variable": "water_arrears",
                 "value": {
@@ -241,9 +254,9 @@
                 }
               },
               {
-                "variable": "total_paid",
+                "variable": "penalty_after_due_date",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_TOTAL_PAID"
+                  "path": "PDF_STATIC_LABEL_WATER_PENALTY_AFTER_DUE_DATE"
                 },
                 "type": "label",
                 "localisation": {
@@ -253,9 +266,33 @@
                 }
               },
               {
-                "variable": "due_amouont_ason",
+                "variable": "current_penalty",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_DUE_ASON"
+                  "path": "PDF_STATIC_LABEL_WATER_CURRENT_PENALTY"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "mgramseva-common"
+                }
+              },
+              {
+                "variable": "net_amount_due_with_penalty",
+                "value": {
+                  "path": "PDF_STATIC_LABEL_WATER_NET_AMOUNT_DUE_WITH_PENALTY"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "mgramseva-common"
+                }
+              },
+              {
+                "variable": "total_due",
+                "value": {
+                  "path": "PDF_STATIC_LABEL_WATER_TOTAL_DUE"
                 },
                 "type": "label",
                 "localisation": {
@@ -268,6 +305,18 @@
                 "variable": "amount_inwords",
                 "value": {
                   "path": "PDF_STATIC_LABEL_WATER_AMOUNT_INWORDS"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "mgramseva-common"
+                }
+              },
+              {
+                "variable": "bill_note",
+                "value": {
+                  "path": "PDF_STATIC_LABEL_WS_BILL_NOTE"
                 },
                 "type": "label",
                 "localisation": {
@@ -423,7 +472,7 @@
               {
                 "variable": "charges_bill",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_CHARGES_RECEIPT"
+                  "path": "PDF_STATIC_LABEL_WATER_CHARGES_BILL"
                 },
                 "type": "label",
                 "localisation": {
@@ -459,7 +508,7 @@
               {
                 "variable": "month_summary",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_WATER_PREVIOUS_MONTH_SUMMARY_NM"
+                  "path": "PDF_STATIC_LABEL_WATER_PREVIOUS_MONTH_SUMMARY"
                 },
                 "type": "label",
                 "localisation": {
@@ -495,7 +544,7 @@
               {
                 "variable": "GPWSC",
                 "value": {
-                  "path": "$.tenantId"
+                  "path": "$.Bill[0].tenantId"
                 },
                 "localisation": {
                   "required": true,
@@ -506,231 +555,357 @@
               {
                 "variable": "totalAmountDue",
                 "value": {
-                  "path": "$.totalDue"
+                  "path": "$.AggregatedDemands.netDueWithPenalty"
                 }
               },
               {
-                "variable": "totalPaid",
+                "variable": "total",
                 "value": {
-                  "path": "$.totalAmountPaid"
+                  "path": "$.Bill[0].totalAmount"
                 }
               },
               {
                 "variable": "mobileNo",
                 "value": {
-                  "path": "$.mobileNumber"
+                  "path": "$.Bill[0].mobileNumber"
                 }
               },
               {
                 "variable": "billNo",
                 "value": {
-                  "path": "$.paymentDetails[0].receiptNumber"
+                  "path": "$.Bill[0].billNumber"
                 }
               },
               {
                 "variable": "fromPeriod",
                 "value": {
-                  "path": "$.paymentDetails[0].bill.billDetails"
+                  "path": "$.Bill[0].billDetails"
                 },
-                "type": "function",
-                "format": "var y=0,x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return (((new Date(x[0].fromPeriod+19800000).getDate())<10?'0'+new Date(x[0].fromPeriod+19800000).getDate():new Date(x[0].fromPeriod+19800000).getDate())+'/'+((new Date(x[0].fromPeriod+19800000).getMonth()+1)<10?'0'+(new Date(x[0].fromPeriod+19800000).getMonth()+1):(new Date(x[0].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].fromPeriod+19800000).getFullYear())"
+                "type":"function",
+                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return (((new Date(x[0].fromPeriod+19800000).getDate())<10?'0'+new Date(x[0].fromPeriod+19800000).getDate():new Date(x[0].fromPeriod+19800000).getDate())+'/'+((new Date(x[0].fromPeriod+19800000).getMonth()+1)<10?'0'+(new Date(x[0].fromPeriod+19800000).getMonth()+1):(new Date(x[0].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].fromPeriod+19800000).getFullYear())"
               },
               {
                 "variable": "toPeriod",
                 "value": {
-                  "path": "$.paymentDetails[0].bill.billDetails"
+                  "path": "$.Bill[0].billDetails"
                 },
-                "type": "function",
-                "format": "var y=0,x=arguments[0];x.sort(function(a, b){return b.toPeriod - a.toPeriod}); return (((new Date(x[0].toPeriod+19800000).getDate())<10?('0'+new Date(x[0].toPeriod+19800000).getDate()):new Date(x[0].toPeriod+19800000).getDate())+'/'+((new Date(x[0].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[0].toPeriod+19800000).getMonth()+1)):(new Date(x[0].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].toPeriod+19800000).getFullYear())"
+                "type":"function",
+                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.toPeriod - a.toPeriod}); return (((new Date(x[0].toPeriod+19800000).getDate())<10?('0'+new Date(x[0].toPeriod+19800000).getDate()):new Date(x[0].toPeriod+19800000).getDate())+'/'+((new Date(x[0].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[0].toPeriod+19800000).getMonth()+1)):(new Date(x[0].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[0].toPeriod+19800000).getFullYear())"
               },
               {
                 "variable": "billIssueDate",
                 "value": {
-                  "path": "$.instrumentDate"
+                  "path": "$.Bill[0].billDate"
                 },
-                "type": "date",
-                "format": "DD/MM/YYYY HH:mm "
+                "type": "date"
               },
               {
-                "variable": "ason_date",
+                "variable": "billDueDate",
                 "value": {
-                  "path": "$.instrumentDate"
+                  "path": "$.Bill[0].billDetails[0].expiryDate"
                 },
-                "type": "date",
-                "format": "DD/MM/YYYY HH:mm "
+                "type": "date"
               },
               {
-                "variable": "paymentmode",
+                "variable": "billdate",
                 "value": {
-                  "path": "$.paymentMode"
+                  "path": "$.Bill[0].billDate"
                 },
-                "localisation": {
-                  "required": true,
-                  "prefix": "PDF_PAYMODE",
-                  "module": "mgramseva-common"
+                "type": "date"
+              },
+              {
+                "variable": "propertyID",
+                "value": {
+                  "path": "$.Bill[0].consumerCode"
+                }
+              },
+              {
+                "variable": "waterCess",
+                "value": {
+                  "path": "$.Bill[0].billDetails[0].billAccountDetails[?(@.taxHeadCode == 'WS_WATER_CESS' || @.taxHeadCode == 'SW_SEWERAGE_CESS')].amount"
+                }
+              },
+              {
+                "variable": "ceilingDebit",
+                "value": {
+                  "path": "$.Bill[0].billDetails[0].billAccountDetails[?(@.taxHeadCode == 'PT_DECIMAL_CEILING_DEBIT')].amount"
+                }
+              },
+              {
+                "variable": "ceilingCredit",
+                "value": {
+                  "path": "$.Bill[0].billDetails[0].billAccountDetails[?(@.taxHeadCode == 'PT_DECIMAL_CEILING_CREDIT')].amount"
                 }
               },
               {
                 "variable": "consumerID",
                 "value": {
-                  "path": "$.paymentDetails[0].bill.consumerCode"
+                  "path": "$.Bill[0].consumerCode"
                 }
+              },
+              {
+                "variable": "date",
+                "value": {
+                  "path": "$.Bill[0].billDate"
+                },
+                "type": "date"
               },
               {
                 "variable": "totalPayment",
                 "value": {
-                  "path": "$.paymentDetails[0].bill.billDetails[0].amountPaid"
+                  "path": "$.Bill[0].billDetails[0].amountPaid"
                 }
               },
               {
                 "variable": "totalArrears",
                 "value": {
-                  "path": "$.paymentDetails[0].bill.billDetails"
-                },
-                "type":"function",
-                "format":"var y=0,x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod});for( var i=1;i<x.length;i++){y=y+x[i].amount;} return y;" 
-              },{
-                "variable": "current_charges",
-                "value": {
-                     "path":"$.paymentDetails[0].bill.billDetails"                              
-                },
-                "type":"function",
-                "format":"var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return x[0].amount;" 
-              },
-              {
-                "variable": "current_charges_10101",
-                "value": {
-                  "path": "$.paymentDetails[0].bill.billDetails"
-                },
-                "type": "function",
-                "format": "var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); var billAccountDetails = x[0].billAccountDetails; for (var i = 0; i < billAccountDetails.length; i++) { if (billAccountDetails[i].taxHeadCode === '10101') { return billAccountDetails[i].amount; } } return 0;"
-              },
-              {
-                "variable": "current_charges_WS_TIME_PENALTY",
-                "value": {
-                  "path": "$.paymentDetails[0].bill.billDetails"
-                },
-                "type": "function",
-                "format": "var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); var billAccountDetails = x[0].billAccountDetails; for (var i = 0; i < billAccountDetails.length; i++) { if (billAccountDetails[i].taxHeadCode === 'WS_TIME_PENALTY') { return billAccountDetails[i].amount; } } return 0;"
+                  "path":"$.AggregatedDemands.totalAreasWithPenalty"
+                }
               },
               {
                 "variable": "arrears",
                 "value": {
-                  "path": "$.paymentDetails[0].bill.billDetails"
+                  "path":"$.Bill[0].billDetails"
                 },
-                "type": "function",
-                "format": "var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod});for( var i=1;i<x.length;i++){y.push({'text':(((new Date(x[i].fromPeriod+19800000).getDate())<10?('0'+new Date(x[i].fromPeriod+19800000).getDate()):new Date(x[i].fromPeriod+19800000).getDate())+'/'+((new Date(x[i].fromPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].fromPeriod+19800000).getMonth()+1)):(new Date(x[i].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].fromPeriod+19800000).getFullYear())+' - '+(((new Date(x[i].toPeriod+19800000).getDate())<10?('0'+new Date(x[i].toPeriod+19800000).getDate()):new Date(x[i].toPeriod+19800000).getDate())+'/'+((new Date(x[i].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].toPeriod+19800000).getMonth()+1)):(new Date(x[i].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].toPeriod+19800000).getFullYear()),'value':'₹  '+x[i].amount});} return y;"
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "mgramseva-common"
+                },
+                "type":"function",
+                "format":"var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod});for( var i=1;i<x.length;i++){ x[i].amount=x[i].amount<0?0:x[i].amount; y.push({'text':(((new Date(x[i].fromPeriod+19800000).getDate())<10?('0'+new Date(x[i].fromPeriod+19800000).getDate()):new Date(x[i].fromPeriod+19800000).getDate())+'/'+((new Date(x[i].fromPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].fromPeriod+19800000).getMonth()+1)):(new Date(x[i].fromPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].fromPeriod+19800000).getFullYear())+' - '+(((new Date(x[i].toPeriod+19800000).getDate())<10?('0'+new Date(x[i].toPeriod+19800000).getDate()):new Date(x[i].toPeriod+19800000).getDate())+'/'+((new Date(x[i].toPeriod+19800000).getMonth()+1)<10?('0'+(new Date(x[i].toPeriod+19800000).getMonth()+1)):(new Date(x[i].toPeriod+19800000).getMonth()+1))+'/'+new Date(x[i].toPeriod+19800000).getFullYear()),'value':'₹ '+x[i].amount});} return y;"
+              },{
+                "variable": "ws_charge",
+                "value": {
+                  "path":"$.Bill[0].billDetails"
+                },
+                "type":"function",
+                "format":"var y=[],x=arguments[0];x.sort(function(a, b){return b.fromPeriod - a.fromPeriod}); return x[0].amount;"
+              },
+              {
+                "variable": "current_month_penalty",
+                "value": {
+                  "path":"$.AggregatedDemands.currentMonthPenalty"
+                }
+              },
+              {
+                "variable": "CurrentMonthWaterCharge",
+                "value": {
+                  "path":"$.AggregatedDemands.currentmonthBill"
+                }
+              },
+              {
+                "variable": "currentMonthRoundOff",
+                "value": {
+                  "path":"$.AggregatedDemands.currentmonthRoundOff"
+                }
+              },
+              {
+                "variable": "totalApplicablePenalty",
+                "value": {
+                  "path":"$.AggregatedDemands.totalApplicablePenalty"
+                }
+              },
+              {
+                "variable": "billIssueTime",
+                "value": {
+                  "path":"$.Bill[0].billDate"
+                }
+              },
+              {
+                "variable": "latestDemandGeneratedDate",
+                "value": {
+                  "path":"$.AggregatedDemands.latestDemandCreatedTime"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "latestDemandPenaltyCreatedtime",
+                "value": {
+                  "path":"$.AggregatedDemands.latestDemandPenaltyCreatedtime"
+                }
+              },
+              {
+                "variable": "latestpenaltyCreatedDate",
+                "value": {
+                  "path":"$.AggregatedDemands.latestDemandPenaltyCreatedtime"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "remainingAdvance",
+                "value": {
+                  "path":"$.AggregatedDemands.advanceAvailable"
+                }
               }
             ]
           },
           {
             "derived": [
               {
-                "variable": "dueason_date",
-                "formula": "{{totalPaid}}>{{totalAmountDue}}?-({{totalPaid}}-{{totalAmountDue}}):{{totalAmountDue}}-{{totalPaid}}"
+                "variable":"waterquality_rate_value",
+                "formula":"'{{waterquality_rate}}'=='NA'? 'NA' : '{{waterquality_rate}}/5'"
+              },{
+                "variable":"watersupply_rate_value",
+                "formula":"('{{watersupply_rate}}' =='NA' || {{watersupply_rate}} ==0 )? 'NA' : '{{watersupply_rate}}/5'"
+              },{
+                "variable":"supplyregula_rate_value",
+                "formula":"'{{supplyregula_rate}}'=='NA' ? 'NA' : '{{supplyregula_rate}}/5'"
+              },{
+                "variable":"meterreading",
+                "formula":"{{currentmeterreading}}-{{lastmeterreading}}"
               },
               {
-                "variable": "waterquality_rate_value",
-                "formula": "'{{waterquality_rate}}'=='NA'? 'NA' : '{{waterquality_rate}}/5'"
+                "variable":"address",
+                "formula":"['{{doorHouseNo}}', '{{streetName}}', '{{mohalla}}'].filter(x=>x != 'NA').join(', ')"
               },
               {
-                "variable": "watersupply_rate_value",
-                "formula": "('{{watersupply_rate}}' =='NA' || {{watersupply_rate}} ==0 )? 'NA' : '{{watersupply_rate}}/5'"
+                "variable":"advanceAdjustedAmount",
+                "formula":"-{{advanceAdjustedAmountOne}}"
               },
               {
-                "variable": "supplyregula_rate_value",
-                "formula": "'{{supplyregula_rate}}'=='NA' ? 'NA' : '{{supplyregula_rate}}/5'"
+                "variable":"advanceAdjustedAmountNew",
+                "formula":"{{advanceAdjustedAmountOne}} != 0 ? -{{advanceAdjustedAmountOne}} : {{remainingAdvance}}"
               },
               {
-                "variable": "address",
-                "formula": "['{{doorHouseNo}}', '{{streetName}}', '{{mohalla}}'].filter(x=>x != 'NA').join(', ')"
+                "variable":"ws_charge_amt",
+                "formula":"{{CurrentMonthWaterCharge}} -{{advanceAdjustedAmount}}"
               },
               {
-                "variable": "totalBillAmount",
-                "formula": "{{totalAmountDue}}"
+                "variable":"totalArrear",
+                "formula":"{{totalArrears}}<0?0:{{totalArrears}}"
+              },
+              {
+                "variable":"totalBillAmount",
+                "formula":"{{CurrentMonthWaterCharge}} + {{currentMonthRoundOff}} + {{totalArrear}} + {{current_month_penalty}} - {{advanceAdjustedAmount}}"
+              },
+              {
+                "variable":"netAmountDue",
+                "formula":"{{totalBillAmount}}+{{advanceAdjustedAmount}}+{{remainingAdvance}}"
+              },
+              {
+                "variable":"netAmountDueWithPenalty",
+                "formula":"{{netAmountDue}}+{{totalApplicablePenalty}}"
+              },
+              {
+                "variable":"penaltyDueDateOld",
+                "formula":"{{billExpiry}}+{{demandIssuedDate}}",
+                "type":"date"
+              },
+              {
+                "variable": "penaltyDueDate",
+                "formula": "{{billIssueTime}} + 864000000",
+                "type": "date"
+              },
+              {
+                "variable": "totalApplicablePenaltyText",
+                "formula": "{{totalApplicablePenalty}} > 0 ? [{'text': 'text' , 'value': {{totalApplicablePenalty}} }] : []"
+              },
+              {
+                "variable": "netAmountDueWithPenaltyText",
+                "formula": "{{totalApplicablePenalty}} > 0 ? [{'text': 'text' , 'value': {{netAmountDueWithPenalty}} }] : []"
+              },
+              {
+                "variable": "latestDemandPenaltyCreatedtimeText",
+                "formula": "{{latestDemandPenaltyCreatedtime}} > 0 ? [{'text': 'text' , 'value': {{latestDemandPenaltyCreatedtime}} }] : []"
               }
             ]
           },
           {
             "externalAPI": [
               {
-                "path": "http://mdms-v2:8080/assam/mdms-v2/v1/_get",
-                "queryParam": "moduleName=tenant&masterName=tenants&tenantId={$.tenantId}&filter=%5B?(@.code=='{$.tenantId}')%5D",
+                "path": "http://mdms-v2.assam:8080/mdms-v2/v1/_get",
+                "queryParam": "moduleName=tenant&masterName=tenants&tenantId={$.Bill[0].tenantId}&filter=%5B?(@.code=='{$.Bill[0].tenantId}')%5D",
                 "apiRequest": null,
-                "responseMapping": [
+                "responseMapping":[
                   {
-                    "variable": "tenantaddress",
-                    "value": "$.MdmsRes.tenant.tenants[0].address"
+                    "variable":"tenantaddress",
+                    "value":"$.MdmsRes.tenant.tenants[0].address"
                   },
                   {
-                    "variable": "phoneNumber",
-                    "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
+                    "variable":"phoneNumber",
+                    "value":"$.MdmsRes.tenant.tenants[0].contactNumber"
                   },
                   {
-                    "variable": "website",
-                    "value": "$.MdmsRes.tenant.tenants[0].domainUrl"
+                    "variable":"website",
+                    "value":"$.MdmsRes.tenant.tenants[0].domainUrl"
                   },
                   {
-                    "variable": "email",
-                    "value": "$.MdmsRes.tenant.tenants[0].emailId"
+                    "variable":"email",
+                    "value":"$.MdmsRes.tenant.tenants[0].emailId"
                   },
                   {
                     "variable": "logoImage",
-                    "value": "$.MdmsRes.tenant.tenants[0].logoId",
-                    "type": "image"
+                    "value":"$.MdmsRes.tenant.tenants[0].logoId",
+                    "type":"image"
                   },
                   {
                     "variable": "logo-header",
-                    "value": "$.MdmsRes.tenant.tenants[0].code",
-                    "localisation": {
-                      "required": true,
+                    "value":"$.MdmsRes.tenant.tenants[0].code",
+                    "localisation":{
+                      "required":true,
                       "prefix": "TENANT_TENANTS",
-                      "module": "mgramseva-common"
+                      "module":"mgramseva-common"
                     }
                   }
                 ]
               },
               {
                 "path": "http://ws-services.assam:8080/assam/ws-services/wc/_search",
-                "queryParam": "tenantId=$.tenantId,connectionNumber=$.paymentDetails[0].bill.consumerCode",
+                "queryParam": "tenantId=$.Bill[0].tenantId,connectionNumber=$.Bill[0].consumerCode",
                 "apiRequest": null,
                 "responseMapping": [
                   {
                     "variable": "meternumber",
                     "value": "$.WaterConnection[(@.length-1)].meterId"
-                  },
-                  {
+                  },{
                     "variable": "serviceType",
                     "value": "$.WaterConnection[(@.length-1)].connectionType",
-                    "localisation": {
-                      "required": true,
+                    "localisation":{
+                      "required":true,
                       "prefix": "WS",
-                      "module": "mgramseva-common"
+                      "module":"mgramseva-common"
                     }
-                  },
-                  {
+                  },{
                     "variable": "payerName",
                     "value": "$.WaterConnection[(@.length-1)].connectionHolders[0].name"
-                  },
-                  {
+                  },{
                     "variable": "doorHouseNo",
                     "value": "$.WaterConnection[(@.length-1)].additionalDetails.doorNo",
-                    "type": "setEmpty"
+                    "type":"setEmpty"
                   },
                   {
                     "variable": "streetName",
                     "value": "$.WaterConnection[(@.length-1)].additionalDetails.street",
-                    "type": "setEmpty"
-                  },
-                  {
+                    "type":"setEmpty"
+                  }, {
                     "variable": "mohalla",
                     "value": "$.WaterConnection[(@.length-1)].additionalDetails.locality"
                   }
                 ]
               },
               {
+                "path": "http://ws-calculator.assam:8080/ws-calculator/meterConnection/_search",
+                "queryParam": "tenantId=$.Bill[0].tenantId,connectionNos=$.Bill[0].consumerCode",
+                "apiRequest": null,
+                "responseMapping": [
+                  {
+                    "variable": "currentmeterreading",
+                    "value": "$.meterReadings[0].currentReading"
+                  },{
+                    "variable": "lastmeterreading",
+                    "value": "$.meterReadings[0].lastReading"
+                  },
+                  {
+                    "variable": "meterreading_date",
+                    "value": "$.meterReadings[(@.length-1)].currentReadingDate",
+                    "type": "date"
+                  }
+                ]
+              },
+              {
                 "path": "http://ws-services.assam:8080/assam/ws-services/wc/_getfeedback",
-                "queryParam": "tenantId=$.tenantId,",
+                "queryParam": "tenantId=$.Bill[0].tenantId,",
                 "apiRequest": null,
                 "responseMapping": [
                   {
@@ -749,7 +924,7 @@
               },
               {
                 "path": "http://ws-services.assam:8080/assam/ws-services/wc/_lastMonthSummary",
-                "queryParam": "tenantId=$.tenantId,currentDate=$.transactionDate",
+                "queryParam": "tenantId=$.Bill[0].tenantId,currentDate=$.Bill[0].billDate",
                 "apiRequest": null,
                 "responseMapping": [
                   {
@@ -771,8 +946,43 @@
                 ]
               },
               {
+                "path": "http://billing-service.assam:8080/billing-service/demand/_history",
+                "queryParam": "tenantId=$.Bill[0].tenantId,consumerCode=$.Bill[0].consumerCode,businessService=$.Bill[0].businessService",
+                "apiRequest": null,
+                "responseMapping": [{
+                  "variable": "advanceAdjustedAmountOne",
+                  "value": "$.AdvanceAdjustedAmount"
+                },
+                  {
+                    "variable": "WCharge",
+                    "value": "$.WaterCharge"
+                  },
+                  {
+                    "variable": "advanceAdjustedAmountTwo",
+                    "value": "$.Demands[?(@.consumerType == 'waterConnection-advance')].demandDetails[(@.length-1)].collectionAmount"
+                  },
+                  {
+                    "variable": "totalBillTaxAmount",
+                    "value": "$.Demands[(@.length-1)].demandDetails[(@.length-1)].taxAmount"
+                  },{
+                    "variable": "totalBillCollectionAmount",
+                    "value": "$.Demands[(@.length-1)].demandDetails[(@.length-1)].collectionAmount"
+                  },
+                  {
+                    "variable": "billExpiry",
+                    "value": "$.Demands[(@.length-1)].billExpiryTime"
+                  },
+                  {
+                    "variable": "demandIssuedDate",
+                    "value": "$.Demands[(@.length-1)].auditDetails.createdTime"
+                  },{
+                    "variable": "advanceAdjustedAmountOneTax",
+                    "value": "$.Demands[?(@.consumerType == 'waterConnection-advance')].demandDetails[(@.length-1)].taxAmount"
+                  }]
+              },
+              {
                 "path": "http://echallan-services.assam:8080/assam/echallan-services/eChallan/v1/_lastMonthSummary",
-                "queryParam": "tenantId=$.tenantId,currentDate=$.transactionDate",
+                "queryParam": "tenantId=$.Bill[0].tenantId,currentDate=$.Bill[0].billDate",
                 "apiRequest": null,
                 "responseMapping": [
                   {
@@ -790,21 +1000,6 @@
                   {
                     "variable": "previousMonthYear",
                     "value": "$.LastMonthSummary.previousMonthYear"
-                  }
-                ]
-              },
-              {
-                "path": "http://billing-service:8080/assam/billing-service/demand/_getAggregateDemandDetails",
-                "queryParam": "tenantId=$.tenantId,consumerCode=$.paymentDetails[0].bill.consumerCode,businessService=$.paymentDetails[0].bill.businessService",
-                "apiRequest": null,
-                "responseMapping": [
-                  {
-                    "variable": "current_charges_v1",
-                    "value": "$.currentmonthBill"
-                  },
-                  {
-                    "variable": "current_penalty_v1",
-                    "value": "$.currentMonthPenalty"
                   }
                 ]
               }

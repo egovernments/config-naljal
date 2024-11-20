@@ -98,6 +98,18 @@ ServiceMaps:
                 outJsonPath: $.Data.totalAmount
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+            mdmsMapping:
+              - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
+                moduleName: tenant
+                masterName: tenants
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
+                filterMapping:
+                  - variable: $tenant
+                    valueJsonpath: $.tenantId
+                uriResponseMapping:
+                  - inJsonPath: $.MdmsRes.tenant.tenants
+                    outJsonPath: $.Data.tenantData
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.challanNo,history=true,tenantId=$.tenantId
@@ -231,6 +243,18 @@ ServiceMaps:
                 outJsonPath: $.Data.totalAmount
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+            mdmsMapping:
+              - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
+                moduleName: tenant
+                masterName: tenants
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
+                filterMapping:
+                  - variable: $tenant
+                    valueJsonpath: $.tenantId
+                uriResponseMapping:
+                  - inJsonPath: $.MdmsRes.tenant.tenants
+                    outJsonPath: $.Data.tenantData
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.challanNo,history=true,tenantId=$.tenantId
@@ -363,6 +387,18 @@ ServiceMaps:
                 outJsonPath: $.Data.totalAmount
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+            mdmsMapping:
+              - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
+                moduleName: tenant
+                masterName: tenants
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
+                filterMapping:
+                  - variable: $tenant
+                    valueJsonpath: $.tenantId
+                uriResponseMapping:
+                  - inJsonPath: $.MdmsRes.tenant.tenants
+                    outJsonPath: $.Data.tenantData
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.challanNo,history=true,tenantId=$.tenantId

@@ -68,6 +68,8 @@ ServiceMaps:
                 outJsonPath: $.Data.applicationStatus
               - inJsonPath: $.status
                 outJsonPath: $.Data.status
+              - inJsonPath: $.auditDetails
+                outJsonPath: $.Data.auditDetails
               - inJsonPath: $.connectionNo
                 outJsonPath: $.Data.connectionNo
               - inJsonPath: $.oldConnectionNo
@@ -132,6 +134,18 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+            mdmsMapping:
+              - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
+                moduleName: tenant
+                masterName: tenants
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
+                filterMapping:
+                  - variable: $tenant
+                    valueJsonpath: $.tenantId
+                uriResponseMapping:
+                  - inJsonPath: $.MdmsRes.tenant.tenants
+                    outJsonPath: $.Data.tenantData
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.applicationNo,history=true,tenantId=$.tenantId
@@ -224,6 +238,13 @@ ServiceMaps:
                 uriResponseMapping:
                   - inJsonPath: $.Demands
                     outJsonPath: $.Data.demands
+              - path: http://ws-services.assam:8080/assam/ws-services/wc/_search
+                queryParam: connectionNumber=$.connectionNo,tenantId=$.tenantId
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61", "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73,"type":"EMPLOYEE","roles":[{"name":"Employee","code":"FSM_EDITOR_EMP","tenantId":"pb.amritsar"}]}}}
+                uriResponseMapping:
+                  - inJsonPath: $.WaterConnection[0].lastDemandGeneratedDate
+                    outJsonPath: $.Data.lastDemandGeneratedDate
+
 
     - topic: update-ws-connection
       configKey: INDEX
@@ -291,6 +312,8 @@ ServiceMaps:
                 outJsonPath: $.Data.applicationStatus
               - inJsonPath: $.status
                 outJsonPath: $.Data.status
+              - inJsonPath: $.auditDetails
+                outJsonPath: $.Data.auditDetails
               - inJsonPath: $.connectionNo
                 outJsonPath: $.Data.connectionNo
               - inJsonPath: $.oldConnectionNo
@@ -355,6 +378,18 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+            mdmsMapping:
+              - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
+                moduleName: tenant
+                masterName: tenants
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
+                filterMapping:
+                  - variable: $tenant
+                    valueJsonpath: $.tenantId
+                uriResponseMapping:
+                  - inJsonPath: $.MdmsRes.tenant.tenants
+                    outJsonPath: $.Data.tenantData
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.applicationNo,history=true,tenantId=$.tenantId
@@ -426,6 +461,13 @@ ServiceMaps:
                 uriResponseMapping:
                   - inJsonPath: $.Payments[0]
                     outJsonPath: $.Data.payments
+              - path: http://ws-services.assam:8080/assam/ws-services/wc/_search
+                queryParam: connectionNumber=$.connectionNo,tenantId=$.tenantId
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61", "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73,"type":"EMPLOYEE","roles":[{"name":"Employee","code":"FSM_EDITOR_EMP","tenantId":"pb.amritsar"}]}}}
+                uriResponseMapping:
+                  - inJsonPath: $.WaterConnection[0].lastDemandGeneratedDate
+                    outJsonPath: $.Data.lastDemandGeneratedDate
+
 
     - topic: update-ws-workflow
       configKey: INDEX
@@ -493,6 +535,8 @@ ServiceMaps:
                 outJsonPath: $.Data.applicationStatus
               - inJsonPath: $.status
                 outJsonPath: $.Data.status
+              - inJsonPath: $.auditDetails
+                outJsonPath: $.Data.auditDetails
               - inJsonPath: $.connectionNo
                 outJsonPath: $.Data.connectionNo
               - inJsonPath: $.oldConnectionNo
@@ -557,6 +601,18 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+            mdmsMapping:
+              - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
+                moduleName: tenant
+                masterName: tenants
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
+                filterMapping:
+                  - variable: $tenant
+                    valueJsonpath: $.tenantId
+                uriResponseMapping:
+                  - inJsonPath: $.MdmsRes.tenant.tenants
+                    outJsonPath: $.Data.tenantData
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.applicationNo,history=true,tenantId=$.tenantId
@@ -628,6 +684,12 @@ ServiceMaps:
                 uriResponseMapping:
                   - inJsonPath: $.Payments[0]
                     outJsonPath: $.Data.payments
+              - path: http://ws-services.assam:8080/assam/ws-services/wc/_search
+                queryParam: connectionNumber=$.connectionNo,tenantId=$.tenantId
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61", "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73,"type":"EMPLOYEE","roles":[{"name":"Employee","code":"FSM_EDITOR_EMP","tenantId":"pb.amritsar"}]}}}
+                uriResponseMapping:
+                  - inJsonPath: $.WaterConnection[0].lastDemandGeneratedDate
+                    outJsonPath: $.Data.lastDemandGeneratedDate
 
     - topic: ws-connection-legacyIndex
       configKey: LEGACYINDEX
@@ -684,6 +746,8 @@ ServiceMaps:
                   },
               }
             fieldMapping:
+              - inJsonPath: $.applicationStatus.state
+                outJsonPath: $.Data.workflow.state
               - inJsonPath: $.processInstance.action
                 outJsonPath: $.Data.workflow.action
               - inJsonPath: $.processInstance.assignes.*.uuid
@@ -694,6 +758,10 @@ ServiceMaps:
                 outJsonPath: $.Data.applicationStatus
               - inJsonPath: $.status
                 outJsonPath: $.Data.status
+              - inJsonPath: $.lastDemandGeneratedDate
+                outJsonPath: $.Data.lastDemandGeneratedDate
+              - inJsonPath: $.auditDetails
+                outJsonPath: $.Data.auditDetails
               - inJsonPath: $.connectionNo
                 outJsonPath: $.Data.connectionNo
               - inJsonPath: $.oldConnectionNo
@@ -724,6 +792,8 @@ ServiceMaps:
                 outJsonPath: $.Data.id
               - inJsonPath: $.propertyId
                 outJsonPath: $.Data.propertyId
+              - inJsonPath: $.rainWaterHarvesting
+                outJsonPath: $.Data.rainWaterHarvesting
               - inJsonPath: $.waterSource
                 outJsonPath: $.Data.waterSource
               - inJsonPath: $.tenantId
@@ -756,6 +826,18 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+            mdmsMapping:
+              - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
+                moduleName: tenant
+                masterName: tenants
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
+                filterMapping:
+                  - variable: $tenant
+                    valueJsonpath: $.tenantId
+                uriResponseMapping:
+                  - inJsonPath: $.MdmsRes.tenant.tenants
+                    outJsonPath: $.Data.tenantData
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.applicationNo,history=true,tenantId=$.tenantId
