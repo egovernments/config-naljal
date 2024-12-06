@@ -221,7 +221,7 @@ serviceMaps:
 
       - jsonPath: $.Employees.*.jurisdictions.*.boundary
 
-      - jsonPath: $.Employees[*][?({id} in @.jurisdictions[*].id)].tenantId
+      - jsonPath: $.Employees.*.jurisdictions.*.tenantId
 
       - jsonPath: $.Employees.*.jurisdictions.*.isActive
 
@@ -463,7 +463,7 @@ serviceMaps:
 
       - jsonPath: $.Employees.*.jurisdictions.*.boundary
 
-      - jsonPath: $.Employees[*][?({id} in @.jurisdictions[*].id)].tenantId
+      - jsonPath: $.Employees.*.jurisdictions.*.tenantId
 
       - jsonPath: $.Employees.*.jurisdictions.*.isActive
 
