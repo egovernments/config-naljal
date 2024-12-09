@@ -814,7 +814,7 @@
           {
             "externalAPI": [
               {
-                "path": "http://mdms-v2.uat:8080/mdms-v2/v1/_get",
+                "path": "http://mdms-v2.uat:8080/uat/mdms-v2/v1/_get",
                 "queryParam": "moduleName=tenant&masterName=tenants&tenantId={$.Bill[0].tenantId}&filter=%5B?(@.code=='{$.Bill[0].tenantId}')%5D",
                 "apiRequest": null,
                 "responseMapping":[
@@ -885,7 +885,7 @@
                 ]
               },
               {
-                "path": "http://ws-calculator.uat:8080/ws-calculator/meterConnection/_search",
+                "path": "http://ws-calculator.uat:8080/uat/ws-calculator/meterConnection/_search",
                 "queryParam": "tenantId=$.Bill[0].tenantId,connectionNos=$.Bill[0].consumerCode",
                 "apiRequest": null,
                 "responseMapping": [
@@ -946,7 +946,7 @@
                 ]
               },
               {
-                "path": "http://billing-service.uat:8080/billing-service/demand/_history",
+                "path": "http://billing-service.uat:8080/uat/billing-service/demand/_history",
                 "queryParam": "tenantId=$.Bill[0].tenantId,consumerCode=$.Bill[0].consumerCode,businessService=$.Bill[0].businessService",
                 "apiRequest": null,
                 "responseMapping": [{
