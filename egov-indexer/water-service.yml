@@ -11,50 +11,7 @@ ServiceMaps:
           jsonPath: $.WaterConnection
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'workflow': { 'state': {}, 'action': '', 'assignes': [] },
-                    'applicationNo': '',
-                    'applicationStatus': '',
-                    'status': '',
-                    'connectionNo': '',
-                    'oldConnectionNo': '',
-                    "imisNumber":'',
-                    "villageId":'',
-                    'plumberInfo': [],
-                    'roadCuttingInfo': [],
-                    'connectionHolders': [],
-                    'roadType': '',
-                    'roadCuttingArea': '',
-                    'connectionExecutionDate': '',
-                    'connectionCategory': '',
-                    'connectionType': '',
-                    'additionalDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'rainWaterHarvesting': '',
-                    'waterSource': '',
-                    'tenantId': '',
-                    'meterId': '',
-                    'meterInstallationDate': '',
-                    'proposedPipeSize': '',
-                    'proposedTaps': '',
-                    'pipeSize': '',
-                    'noOfTaps': '',
-                    'applicationType': '',
-                    'dateEffectiveFrom': '',
-                    'previousReadingDate': '',
-                    'arrears': '',
-                    'paymentType': '',
-                    'penalty': '',
-                    'advance': '',
-                    '@timestamp': 'timestamp',
-                    'history': {},
-                    'payments': {},
-                  },
-              }
+            indexMapping: {"Data":{"workflow": {"state": {}, "action": "", "assignes": []},"applicationNo":"","applicationStatus":"","status":"","auditDetails":{},"connectionNo":"","oldConnectionNo":"","plumberInfo":[],"roadCuttingInfo":[],"connectionHolders":[],"roadType":"","roadCuttingArea":"","connectionExecutionDate":"","connectionCategory":"","connectionType":"","additionalDetails":{},"id":"","propertyId":"","rainWaterHarvesting":"","waterSource":"","tenantId":"","meterId":"","meterInstallationDate":"","proposedPipeSize":"","proposedTaps":"","pipeSize":"","noOfTaps":"","applicationType":"","dateEffectiveFrom":"", "previousReadingDate":"", "arrears":"","paymentType":"","penalty":"","advance":"", "@timestamp":"timestamp","history":{},"tenantData":{},"payments":{},"lastDemandGeneratedDate":"","dataVerified":""}}
             fieldMapping:
               - inJsonPath: $.applicationStatus.state
                 outJsonPath: $.Data.workflow.state
@@ -134,6 +91,8 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+              - inJsonPath: $.dataVerified
+                outJsonPath: $.Data.dataVerified
             mdmsMapping:
               - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
                 moduleName: tenant
@@ -255,50 +214,7 @@ ServiceMaps:
           jsonPath: $.WaterConnection
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'workflow': { 'state': {}, 'action': '', 'assignes': [] },
-                    'applicationNo': '',
-                    'applicationStatus': '',
-                    'status': '',
-                    'connectionNo': '',
-                    'oldConnectionNo': '',
-                    "imisNumber":'',
-                    "villageId":'',
-                    'plumberInfo': [],
-                    'roadCuttingInfo': [],
-                    'connectionHolders': [],
-                    'roadType': '',
-                    'roadCuttingArea': '',
-                    'connectionExecutionDate': '',
-                    'connectionCategory': '',
-                    'connectionType': '',
-                    'additionalDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'rainWaterHarvesting': '',
-                    'waterSource': '',
-                    'tenantId': '',
-                    'meterId': '',
-                    'meterInstallationDate': '',
-                    'proposedPipeSize': '',
-                    'proposedTaps': '',
-                    'pipeSize': '',
-                    'noOfTaps': '',
-                    'applicationType': '',
-                    'dateEffectiveFrom': '',
-                    'previousReadingDate': '',
-                    'arrears': '',
-                    'paymentType': '',
-                    'penalty': '',
-                    'advance': '',
-                    '@timestamp': 'timestamp',
-                    'history': {},
-                    'payments': {},
-                  },
-              }
+            indexMapping: {"Data":{"workflow": {"state": {}, "action": "", "assignes": []},"applicationNo":"","applicationStatus":"","status":"","auditDetails":{},"connectionNo":"","oldConnectionNo":"","plumberInfo":[],"roadCuttingInfo":[],"connectionHolders":[],"roadType":"","roadCuttingArea":"","connectionExecutionDate":"","connectionCategory":"","connectionType":"","additionalDetails":{},"id":"","propertyId":"","rainWaterHarvesting":"","waterSource":"","tenantId":"","meterId":"","meterInstallationDate":"","proposedPipeSize":"","proposedTaps":"","pipeSize":"","noOfTaps":"","applicationType":"","dateEffectiveFrom":"", "previousReadingDate":"", "arrears":"","paymentType":"","penalty":"","advance":"", "@timestamp":"timestamp","history":{},"tenantData":{},"payments":{},"lastDemandGeneratedDate":"","dataVerified":""}}
             fieldMapping:
               - inJsonPath: $.applicationStatus.state
                 outJsonPath: $.Data.workflow.state
@@ -378,6 +294,8 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+              - inJsonPath: $.dataVerified
+                outJsonPath: $.Data.dataVerified
             mdmsMapping:
               - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
                 moduleName: tenant
@@ -478,50 +396,7 @@ ServiceMaps:
           jsonPath: $.WaterConnection
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'workflow': { 'state': {}, 'action': '', 'assignes': [] },
-                    'applicationNo': '',
-                    'applicationStatus': '',
-                    'status': '',
-                    'connectionNo': '',
-                    'oldConnectionNo': '',
-                    "imisNumber":'',
-                    "villageId":'',
-                    'plumberInfo': [],
-                    'roadCuttingInfo': [],
-                    'connectionHolders': [],
-                    'roadType': '',
-                    'roadCuttingArea': '',
-                    'connectionExecutionDate': '',
-                    'connectionCategory': '',
-                    'connectionType': '',
-                    'additionalDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'rainWaterHarvesting': '',
-                    'waterSource': '',
-                    'tenantId': '',
-                    'meterId': '',
-                    'meterInstallationDate': '',
-                    'proposedPipeSize': '',
-                    'proposedTaps': '',
-                    'pipeSize': '',
-                    'noOfTaps': '',
-                    'applicationType': '',
-                    'dateEffectiveFrom': '',
-                    'previousReadingDate': '',
-                    'arrears': '',
-                    'paymentType': '',
-                    'penalty': '',
-                    'advance': '',
-                    '@timestamp': 'timestamp',
-                    'history': {},
-                    'payments': {},
-                  },
-              }
+            indexMapping: {"Data":{"workflow": {"state": {}, "action": "", "assignes": []},"applicationNo":"","applicationStatus":"","status":"","auditDetails":{},"connectionNo":"","oldConnectionNo":"","plumberInfo":[],"roadCuttingInfo":[],"connectionHolders":[],"roadType":"","roadCuttingArea":"","connectionExecutionDate":"","connectionCategory":"","connectionType":"","additionalDetails":{},"id":"","propertyId":"","rainWaterHarvesting":"","waterSource":"","tenantId":"","meterId":"","meterInstallationDate":"","proposedPipeSize":"","proposedTaps":"","pipeSize":"","noOfTaps":"","applicationType":"","dateEffectiveFrom":"", "previousReadingDate":"", "arrears":"","paymentType":"","penalty":"","advance":"", "@timestamp":"timestamp","history":{},"tenantData":{},"payments":{},"lastDemandGeneratedDate":"","dataVerified":""}}
             fieldMapping:
               - inJsonPath: $.applicationStatus.state
                 outJsonPath: $.Data.workflow.state
@@ -601,6 +476,8 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+              - inJsonPath: $.dataVerified
+                outJsonPath: $.Data.dataVerified
             mdmsMapping:
               - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
                 moduleName: tenant
@@ -701,50 +578,7 @@ ServiceMaps:
           jsonPath: $.WaterConnection.*
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'workflow': { 'state': {}, 'action': '', 'assignes': [] },
-                    'applicationNo': '',
-                    'applicationStatus': '',
-                    'status': '',
-                    'connectionNo': '',
-                    'oldConnectionNo': '',
-                    "imisNumber":'',
-                    "villageId":'',
-                    'plumberInfo': [],
-                    'roadCuttingInfo': [],
-                    'connectionHolders': [],
-                    'roadType': '',
-                    'roadCuttingArea': '',
-                    'connectionExecutionDate': '',
-                    'connectionCategory': '',
-                    'connectionType': '',
-                    'additionalDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'rainWaterHarvesting': '',
-                    'waterSource': '',
-                    'tenantId': '',
-                    'meterId': '',
-                    'meterInstallationDate': '',
-                    'proposedPipeSize': '',
-                    'proposedTaps': '',
-                    'pipeSize': '',
-                    'noOfTaps': '',
-                    'applicationType': '',
-                    'dateEffectiveFrom': '',
-                    'previousReadingDate': '',
-                    'arrears': '',
-                    'paymentType': '',
-                    'penalty': '',
-                    'advance': '',
-                    '@timestamp': 'timestamp',
-                    'history': {},
-                    'payments': {},
-                  },
-              }
+            indexMapping: {"Data":{"workflow": {"state": {}, "action": "", "assignes": []},"applicationNo":"","applicationStatus":"","status":"","auditDetails":{},"connectionNo":"","oldConnectionNo":"","plumberInfo":[],"roadCuttingInfo":[],"connectionHolders":[],"roadType":"","roadCuttingArea":"","connectionExecutionDate":"","connectionCategory":"","connectionType":"","additionalDetails":{},"id":"","propertyId":"","rainWaterHarvesting":"","waterSource":"","tenantId":"","meterId":"","meterInstallationDate":"","proposedPipeSize":"","proposedTaps":"","pipeSize":"","noOfTaps":"","applicationType":"","dateEffectiveFrom":"", "previousReadingDate":"", "arrears":"","paymentType":"","penalty":"","advance":"", "@timestamp":"timestamp","history":{},"tenantData":{},"payments":{},"lastDemandGeneratedDate":"","dataVerified":""}}
             fieldMapping:
               - inJsonPath: $.applicationStatus.state
                 outJsonPath: $.Data.workflow.state
@@ -826,6 +660,8 @@ ServiceMaps:
                 outJsonPath: $.Data.paymentType
               - inJsonPath: $.@timestamp
                 outJsonPath: $.Data.@timestamp
+              - inJsonPath: $.dataVerified
+                outJsonPath: $.Data.dataVerified
             mdmsMapping:
               - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
                 moduleName: tenant
