@@ -12,19 +12,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdDate
           jsonPath: $.Receipt.*
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'tenantId': '',
-                    'transactionId': '',
-                    'Bill': {},
-                    'auditDetails': {},
-                    'instrument': {},
-                    'tenantData': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"tenantId":"","transactionId":"","Bill":{},"auditDetails":{},"instrument":{},"tenantData":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.tenantId
                 outJsonPath: $.Data.tenantId
@@ -71,19 +59,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdDate
           jsonPath: $.Receipt.*
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'tenantId': '',
-                    'transactionId': '',
-                    'Bill': {},
-                    'auditDetails': {},
-                    'instrument': {},
-                    'tenantData': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"tenantId":"","transactionId":"","Bill":{},"auditDetails":{},"instrument":{},"tenantData":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.tenantId
                 outJsonPath: $.Data.tenantId

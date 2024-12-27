@@ -11,38 +11,7 @@ ServiceMaps:
           jsonPath: $.Challan
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'workflow': { 'state': {}, 'action': '', 'assignes': [] },
-                    'applicationNo': '',
-                    'tenantId': '',
-                    'businessService': '',
-                    'challanNo': '',
-                    'referenceId': '',
-                    'description': '',
-                    'accountId': '',
-                    'additionalDetail': {},
-                    'source': '',
-                    'taxPeriodFrom': '',
-                    'taxPeriodTo': '',
-                    'amount': [],
-                    'filestoreid': '',
-                    'additionalDetails': {},
-                    'applicationStatus': '',
-                    'vendor': '',
-                    'typeOfExpense': '',
-                    'billDate': '',
-                    'billIssuedDate': '',
-                    'paidDate': '',
-                    'isBillPaid': '',
-                    'vendorName': '',
-                    'totalAmount': '',
-                    '@timestamp': 'timestamp',
-                    'history': {},
-                  },
-              }
+            indexMapping: {"Data":{"workflow": {"state": {}, "action": "", "assignes": []},"applicationNo":"","tenantId":"","businessService":"","challanNo":"","referenceId":"","description":"","accountId":"","additionalDetail":{},"source":"","taxPeriodFrom":"","taxPeriodTo":"","amount":[],"filestoreid":"","additionalDetails":{},"applicationStatus":"","vendor":"","typeOfExpense":"","billDate":"","billIssuedDate":"","paidDate":"","isBillPaid":"","vendorName":"","totalAmount":"","tenantData":{},"@timestamp":"timestamp","history":{}}}
             fieldMapping:
               - inJsonPath: $.applicationStatus.state
                 outJsonPath: $.Data.workflow.state
@@ -113,36 +82,7 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.challanNo,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.echallan',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.echallan","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -156,38 +96,7 @@ ServiceMaps:
           jsonPath: $.Challan
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'workflow': { 'state': {}, 'action': '', 'assignes': [] },
-                    'applicationNo': '',
-                    'tenantId': '',
-                    'businessService': '',
-                    'challanNo': '',
-                    'referenceId': '',
-                    'description': '',
-                    'accountId': '',
-                    'additionalDetail': {},
-                    'source': '',
-                    'taxPeriodFrom': '',
-                    'taxPeriodTo': '',
-                    'amount': [],
-                    'filestoreid': '',
-                    'additionalDetails': {},
-                    'applicationStatus': '',
-                    'vendor': '',
-                    'typeOfExpense': '',
-                    'billDate': '',
-                    'billIssuedDate': '',
-                    'paidDate': '',
-                    'isBillPaid': '',
-                    'vendorName': '',
-                    'totalAmount': '',
-                    '@timestamp': 'timestamp',
-                    'history': {},
-                  },
-              }
+            indexMapping: {"Data":{"workflow": {"state": {}, "action": "", "assignes": []},"applicationNo":"","tenantId":"","businessService":"","challanNo":"","referenceId":"","description":"","accountId":"","additionalDetail":{},"source":"","taxPeriodFrom":"","taxPeriodTo":"","amount":[],"filestoreid":"","additionalDetails":{},"applicationStatus":"","vendor":"","typeOfExpense":"","billDate":"","billIssuedDate":"","paidDate":"","isBillPaid":"","vendorName":"","totalAmount":"","tenantData":{},"@timestamp":"timestamp","history":{}}}
             fieldMapping:
               - inJsonPath: $.applicationStatus.state
                 outJsonPath: $.Data.workflow.state
@@ -258,36 +167,7 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.challanNo,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.echallan',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.echallan","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -302,38 +182,7 @@ ServiceMaps:
           jsonPath: $.challans.*
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'workflow': { 'state': {}, 'action': '', 'assignes': [] },
-                    'applicationNo': '',
-                    'tenantId': '',
-                    'businessService': '',
-                    'challanNo': '',
-                    'referenceId': '',
-                    'description': '',
-                    'accountId': '',
-                    'additionalDetail': {},
-                    'source': '',
-                    'taxPeriodFrom': '',
-                    'taxPeriodTo': '',
-                    'amount': [],
-                    'filestoreid': '',
-                    'additionalDetails': {},
-                    'applicationStatus': '',
-                    'vendor': '',
-                    'typeOfExpense': '',
-                    'billDate': '',
-                    'billIssuedDate': '',
-                    'paidDate': '',
-                    'isBillPaid': '',
-                    'vendorName': '',
-                    'totalAmount': '',
-                    '@timestamp': 'timestamp',
-                    'history': {},
-                  },
-              }
+            indexMapping: {"Data":{"workflow": {"state": {}, "action": "", "assignes": []},"applicationNo":"","tenantId":"","businessService":"","challanNo":"","referenceId":"","description":"","accountId":"","additionalDetail":{},"source":"","taxPeriodFrom":"","taxPeriodTo":"","amount":[],"filestoreid":"","additionalDetails":{},"applicationStatus":"","vendor":"","typeOfExpense":"","billDate":"","billIssuedDate":"","paidDate":"","isBillPaid":"","vendorName":"","totalAmount":"","tenantData":{},"@timestamp":"timestamp","history":{}}}
             fieldMapping:
               - inJsonPath: $.processInstance.action
                 outJsonPath: $.Data.workflow.action
@@ -402,36 +251,7 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.challanNo,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.echallan',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.echallan","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history

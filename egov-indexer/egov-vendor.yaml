@@ -12,7 +12,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
           jsonPath: $.vendor
           customJsonMapping:
-            indexMapping: { 'Data': { 'vendor': {}, 'tenantData': {} } }
+            indexMapping: {"Data":{"vendor":{},"tenantData":{}}}
             fieldMapping:
               - inJsonPath: $
                 outJsonPath: $.Data.vendor
@@ -21,7 +21,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -39,7 +39,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
           jsonPath: $.vendor.*
           customJsonMapping:
-            indexMapping: { 'Data': { 'vendor': {}, 'tenantData': {} } }
+            indexMapping: {"Data":{"vendor":{},"tenantData":{}}}
             fieldMapping:
               - inJsonPath: $
                 outJsonPath: $.Data.vendor
@@ -48,7 +48,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
