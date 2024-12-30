@@ -11,37 +11,7 @@ ServiceMaps:
           jsonPath: $.Property
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'ownerNames': [],
-                    'doorNo': '',
-                    'street': '',
-                    'owners': [],
-                    'acknowldgementNumber': '',
-                    'propertyType': '',
-                    'ownershipCategory': '',
-                    'creationReason': '',
-                    'usageCategory': '',
-                    'noOfFloors': '',
-                    'landArea': '',
-                    'superBuiltUpArea': '',
-                    'source': '',
-                    'channel': '',
-                    'units': {},
-                    'auditDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'surveyId': '',
-                    'linkedProperties': {},
-                    'tenantId': '',
-                    'accountId': '',
-                    'oldPropertyId': '',
-                    'status': '',
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"ownerNames":[],"doorNo":"","street":"","owners":[],"acknowldgementNumber":"","propertyType":"","ownershipCategory":"","creationReason":"","usageCategory":"","noOfFloors":"","landArea":"","superBuiltUpArea":"","source":"","channel":"","units":{},"auditDetails":{},"id":"","propertyId":"","surveyId":"","linkedProperties":{},"tenantId":"","tenantData":{},"accountId":"","oldPropertyId":"","status":"","@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.owners.*.name
                 outJsonPath: $.Data.ownerNames
@@ -96,57 +66,14 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -155,7 +82,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -166,7 +93,7 @@ ServiceMaps:
                 moduleName: PropertyTax
                 masterName: UsageCategory
                 tenantId: as
-                filter: '[?(@.code == $usageCategory)]'
+                filter: "[?(@.code == $usageCategory)]"
                 filterMapping:
                   - variable: $usageCategory
                     valueJsonpath: $.usageCategory
@@ -180,20 +107,7 @@ ServiceMaps:
           jsonPath: $.Property
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'acknowldgementNumber': '',
-                    'creationReason': '',
-                    'auditDetails': {},
-                    'propertyId': '',
-                    'tenantId': '',
-                    'accountId': '',
-                    'status': '',
-                    '@timestamp': '',
-                  },
-              }
+            indexMapping: {"Data":{"acknowldgementNumber":"","creationReason":"","auditDetails":{},"propertyId":"","tenantId":"","tenantData":{},"accountId":"","status":"","@timestamp":""}}
             fieldMapping:
               - inJsonPath: $.acknowldgementNumber
                 outJsonPath: $.Data.acknowldgementNumber
@@ -214,22 +128,8 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
@@ -241,36 +141,7 @@ ServiceMaps:
                         valueJsonpath: $.address.locality.code
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -279,7 +150,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -296,37 +167,7 @@ ServiceMaps:
           jsonPath: $.Property
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'ownerNames': [],
-                    'doorNo': '',
-                    'street': '',
-                    'owners': [],
-                    'acknowldgementNumber': '',
-                    'propertyType': '',
-                    'ownershipCategory': '',
-                    'creationReason': '',
-                    'usageCategory': '',
-                    'noOfFloors': '',
-                    'landArea': '',
-                    'superBuiltUpArea': '',
-                    'source': '',
-                    'channel': '',
-                    'units': {},
-                    'auditDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'surveyId': '',
-                    'linkedProperties': {},
-                    'tenantId': '',
-                    'accountId': '',
-                    'oldPropertyId': '',
-                    'status': '',
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"ownerNames":[],"doorNo":"","street":"","owners":[],"acknowldgementNumber":"","propertyType":"","ownershipCategory":"","creationReason":"","usageCategory":"","noOfFloors":"","landArea":"","superBuiltUpArea":"","source":"","channel":"","units":{},"auditDetails":{},"id":"","propertyId":"","surveyId":"","linkedProperties":{},"tenantId":"","tenantData":{},"accountId":"","oldPropertyId":"","status":"","@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.owners.*.name
                 outJsonPath: $.Data.ownerNames
@@ -381,57 +222,14 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -440,7 +238,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -451,7 +249,7 @@ ServiceMaps:
                 moduleName: PropertyTax
                 masterName: UsageCategory
                 tenantId: as
-                filter: '[?(@.code == $usageCategory)]'
+                filter: "[?(@.code == $usageCategory)]"
                 filterMapping:
                   - variable: $usageCategory
                     valueJsonpath: $.usageCategory
@@ -465,20 +263,7 @@ ServiceMaps:
           jsonPath: $.Property
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'acknowldgementNumber': '',
-                    'creationReason': '',
-                    'auditDetails': {},
-                    'propertyId': '',
-                    'tenantId': '',
-                    'accountId': '',
-                    'status': '',
-                    '@timestamp': '',
-                  },
-              }
+            indexMapping: {"Data":{"acknowldgementNumber":"","creationReason":"","auditDetails":{},"propertyId":"","tenantId":"","tenantData":{},"accountId":"","status":"","@timestamp":""}}
             fieldMapping:
               - inJsonPath: $.acknowldgementNumber
                 outJsonPath: $.Data.acknowldgementNumber
@@ -499,22 +284,8 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
@@ -526,36 +297,7 @@ ServiceMaps:
                         valueJsonpath: $.address.locality.code
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -581,34 +323,7 @@ ServiceMaps:
           jsonPath: $.Property
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'owners': [],
-                    'acknowldgementNumber': '',
-                    'propertyType': '',
-                    'ownershipCategory': '',
-                    'creationReason': '',
-                    'usageCategory': '',
-                    'noOfFloors': '',
-                    'landArea': '',
-                    'superBuiltUpArea': '',
-                    'source': '',
-                    'channel': '',
-                    'units': {},
-                    'auditDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'surveyId': '',
-                    'linkedProperties': {},
-                    'tenantId': '',
-                    'accountId': '',
-                    'oldPropertyId': '',
-                    'status': '',
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"owners":[],"acknowldgementNumber":"","propertyType":"","ownershipCategory":"","creationReason":"","usageCategory":"","noOfFloors":"","landArea":"","superBuiltUpArea":"","source":"","channel":"","units":{},"auditDetails":{},"id":"","propertyId":"","surveyId":"","linkedProperties":{},"tenantId":"","tenantData":{},"accountId":"","oldPropertyId":"","status":"","@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.owners.*.uuid
                 outJsonPath: $.Data.owners
@@ -657,57 +372,14 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -716,7 +388,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -727,7 +399,7 @@ ServiceMaps:
                 moduleName: PropertyTax
                 masterName: UsageCategory
                 tenantId: as
-                filter: '[?(@.code == $usageCategory)]'
+                filter: "[?(@.code == $usageCategory)]"
                 filterMapping:
                   - variable: $usageCategory
                     valueJsonpath: $.usageCategory
@@ -741,20 +413,7 @@ ServiceMaps:
           jsonPath: $.Property
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'acknowldgementNumber': '',
-                    'creationReason': '',
-                    'auditDetails': {},
-                    'propertyId': '',
-                    'tenantId': '',
-                    'accountId': '',
-                    'status': '',
-                    '@timestamp': '',
-                  },
-              }
+            indexMapping: {"Data":{"acknowldgementNumber":"","creationReason":"","auditDetails":{},"propertyId":"","tenantId":"","tenantData":{},"accountId":"","status":"","@timestamp":""}}
             fieldMapping:
               - inJsonPath: $.acknowldgementNumber
                 outJsonPath: $.Data.acknowldgementNumber
@@ -775,22 +434,8 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
@@ -802,36 +447,7 @@ ServiceMaps:
                         valueJsonpath: $.address.locality.code
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -840,7 +456,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -858,37 +474,7 @@ ServiceMaps:
           jsonPath: $.Properties.*
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'ownerNames': [],
-                    'doorNo': '',
-                    'street': '',
-                    'owners': [],
-                    'acknowldgementNumber': '',
-                    'propertyType': '',
-                    'ownershipCategory': '',
-                    'creationReason': '',
-                    'usageCategory': '',
-                    'noOfFloors': '',
-                    'landArea': '',
-                    'superBuiltUpArea': '',
-                    'source': '',
-                    'channel': '',
-                    'units': {},
-                    'auditDetails': {},
-                    'id': '',
-                    'propertyId': '',
-                    'surveyId': '',
-                    'linkedProperties': {},
-                    'tenantId': '',
-                    'accountId': '',
-                    'oldPropertyId': '',
-                    'status': '',
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"ownerNames":[],"doorNo":"","street":"","owners":[],"acknowldgementNumber":"","propertyType":"","ownershipCategory":"","creationReason":"","usageCategory":"","noOfFloors":"","landArea":"","superBuiltUpArea":"","source":"","channel":"","units":{},"auditDetails":{},"id":"","propertyId":"","surveyId":"","linkedProperties":{},"tenantId":"","tenantData":{},"accountId":"","oldPropertyId":"","status":"","@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.owners.*.name
                 outJsonPath: $.Data.ownerNames
@@ -943,57 +529,14 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -1002,7 +545,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -1013,7 +556,7 @@ ServiceMaps:
                 moduleName: PropertyTax
                 masterName: UsageCategory
                 tenantId: as
-                filter: '[?(@.code == $usageCategory)]'
+                filter: "[?(@.code == $usageCategory)]"
                 filterMapping:
                   - variable: $usageCategory
                     valueJsonpath: $.usageCategory
@@ -1031,20 +574,7 @@ ServiceMaps:
           jsonPath: $.Properties.*
           timeStampField: $.auditDetails.lastModifiedTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'acknowldgementNumber': '',
-                    'creationReason': '',
-                    'auditDetails': {},
-                    'propertyId': '',
-                    'tenantId': '',
-                    'accountId': '',
-                    'status': '',
-                    '@timestamp': '',
-                  },
-              }
+            indexMapping: {"Data":{"acknowldgementNumber":"","creationReason":"","auditDetails":{},"propertyId":"","tenantId":"","tenantData":{},"accountId":"","status":"","@timestamp":""}}
             fieldMapping:
               - inJsonPath: $.acknowldgementNumber
                 outJsonPath: $.Data.acknowldgementNumber
@@ -1065,63 +595,20 @@ ServiceMaps:
             externalUriMapping:
               - path: http://egov-location.assam:8080/assam/egov-location/location/v11/boundarys/_search
                 queryParam: hierarchyTypeCode=REVENUE,boundaryType=Block,codes=$.address.locality.code,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': '02dbe5be-28df-4d82-954f-3d27c56cca7d',
-                        'userInfo': { 'id': 73 },
-                      },
-                  }
+                apiRequest: {"RequestInfo": {"apiId": "org.egov.pt","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654", "requesterId": "61",
+                                             "authToken": "02dbe5be-28df-4d82-954f-3d27c56cca7d","userInfo":{"id":73}}}
                 uriResponseMapping:
                   - inJsonPath: $.TenantBoundary[0].boundary[0]
                     outJsonPath: $.Data.ward
                   - inJsonPath: $.TenantBoundary[0].boundary[0].children
                     outJsonPath: $.Data.ward.children
-                    filter: '[?(@.code == $locality)]'
+                    filter: "[?(@.code == $locality)]"
                     filterMapping:
                       - variable: $locality
                         valueJsonpath: $.address.locality.code
               - path: http://egov-workflow-v2.assam:8080/egov-workflow-v2/egov-wf/process/_search
                 queryParam: businessIds=$.acknowldgementNumber,history=true,tenantId=$.tenantId
-                apiRequest:
-                  {
-                    'RequestInfo':
-                      {
-                        'apiId': 'org.egov.pt',
-                        'ver': '1.0',
-                        'ts': 1502890899493,
-                        'action': 'asd',
-                        'did': '4354648646',
-                        'key': 'xyz',
-                        'msgId': '654654',
-                        'requesterId': '61',
-                        'authToken': 'd9994555-7656-4a67-ab3a-a952a0d4dfc8',
-                        'userInfo':
-                          {
-                            'id': 1,
-                            'uuid': '1fec8102-0e02-4d0a-b283-cd80d5dab067',
-                            'type': 'EMPLOYEE',
-                            'tenantId': 'pb.amritsar',
-                            'roles':
-                              [
-                                {
-                                  'name': 'Employee',
-                                  'code': 'EMPLOYEE',
-                                  'tenantId': 'pb.amritsar',
-                                },
-                              ],
-                          },
-                      },
-                  }
+                apiRequest: {"RequestInfo":{"apiId":"org.egov.pt","ver":"1.0","ts":1502890899493,"action":"asd","did":"4354648646","key":"xyz","msgId":"654654","requesterId":"61","authToken":"d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo":{"id":1,"uuid":"1fec8102-0e02-4d0a-b283-cd80d5dab067","type":"EMPLOYEE","tenantId":"pb.amritsar","roles":[{"name":"Employee","code":"EMPLOYEE","tenantId":"pb.amritsar"}]}}}
                 uriResponseMapping:
                   - inJsonPath: $.ProcessInstances
                     outJsonPath: $.Data.history
@@ -1130,7 +617,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -1147,25 +634,7 @@ ServiceMaps:
           jsonPath: $.Assessment
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'id': '',
-                    'tenantId': '',
-                    'additionalDetails': '',
-                    'assessmentNumber': '',
-                    'financialYear': '',
-                    'propertyId': '',
-                    'assessmentDate': '',
-                    'status': '',
-                    'source': '',
-                    'unitUsageList': {},
-                    'channel': '',
-                    'auditDetails': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"id":"","tenantId":"","additionalDetails":"","assessmentNumber":"","financialYear":"","propertyId":"","assessmentDate":"","status":"","source":"","unitUsageList":{},"channel":"","auditDetails":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.id
                 outJsonPath: $.Data.id
@@ -1203,25 +672,7 @@ ServiceMaps:
           jsonPath: $.Assessment
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'id': '',
-                    'tenantId': '',
-                    'additionalDetails': '',
-                    'assessmentNumber': '',
-                    'financialYear': '',
-                    'propertyId': '',
-                    'assessmentDate': '',
-                    'status': '',
-                    'source': '',
-                    'unitUsageList': {},
-                    'channel': '',
-                    'auditDetails': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"id":"","tenantId":"","additionalDetails":"","assessmentNumber":"","financialYear":"","propertyId":"","assessmentDate":"","status":"","source":"","unitUsageList":{},"channel":"","auditDetails":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.id
                 outJsonPath: $.Data.id
@@ -1259,25 +710,7 @@ ServiceMaps:
           jsonPath: $.Assessment
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'id': '',
-                    'tenantId': '',
-                    'additionalDetails': '',
-                    'assessmentNumber': '',
-                    'financialYear': '',
-                    'propertyId': '',
-                    'assessmentDate': '',
-                    'status': '',
-                    'source': '',
-                    'unitUsageList': {},
-                    'channel': '',
-                    'auditDetails': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"id":"","tenantId":"","additionalDetails":"","assessmentNumber":"","financialYear":"","propertyId":"","assessmentDate":"","status":"","source":"","unitUsageList":{},"channel":"","auditDetails":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.id
                 outJsonPath: $.Data.id
@@ -1316,25 +749,7 @@ ServiceMaps:
           isBulk: true
           timeStampField: $.auditDetails.createdTime
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'id': '',
-                    'tenantId': '',
-                    'additionalDetails': '',
-                    'assessmentNumber': '',
-                    'financialYear': '',
-                    'propertyId': '',
-                    'assessmentDate': '',
-                    'status': '',
-                    'source': '',
-                    'unitUsageList': {},
-                    'channel': '',
-                    'auditDetails': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"id":"","tenantId":"","additionalDetails":"","assessmentNumber":"","financialYear":"","propertyId":"","assessmentDate":"","status":"","source":"","unitUsageList":{},"channel":"","auditDetails":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.id
                 outJsonPath: $.Data.id

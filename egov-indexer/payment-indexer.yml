@@ -12,25 +12,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
           jsonPath: $.Payment
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'tenantId': '',
-                    'id': '',
-                    'transactionNumber': '',
-                    'transactionDate': 1,
-                    'paymentMode': '',
-                    'paymentStatus': '',
-                    'payer': { 'id': '', 'name': '' },
-                    'paidBy': '',
-                    'paymentDetails': {},
-                    'auditDetails': {},
-                    'additionalDetails': {},
-                    'tenantData': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"tenantId":"","id":"","transactionNumber":"","transactionDate":1,"paymentMode":"","paymentStatus":"","payer":{"id":"","name":""},"paidBy":"","paymentDetails":{},"auditDetails":{},"additionalDetails":{},"tenantData":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.tenantId
                 outJsonPath: $.Data.tenantId
@@ -81,25 +63,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
           jsonPath: $.Payment
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'tenantId': '',
-                    'id': '',
-                    'transactionNumber': '',
-                    'transactionDate': 1,
-                    'paymentMode': '',
-                    'paymentStatus': '',
-                    'payer': { 'id': '', 'name': '' },
-                    'paidBy': '',
-                    'paymentDetails': {},
-                    'auditDetails': {},
-                    'additionalDetails': {},
-                    'tenantData': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"tenantId":"","id":"","transactionNumber":"","transactionDate":1,"paymentMode":"","paymentStatus":"","payer":{"id":"","name":""},"paidBy":"","paymentDetails":{},"auditDetails":{},"additionalDetails":{},"tenantData":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.tenantId
                 outJsonPath: $.Data.tenantId
@@ -132,7 +96,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -150,25 +114,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
           jsonPath: $.Payments.*
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'tenantId': '',
-                    'id': '',
-                    'transactionNumber': '',
-                    'transactionDate': 1,
-                    'paymentMode': '',
-                    'paymentStatus': '',
-                    'payer': { 'id': '', 'name': '' },
-                    'paidBy': '',
-                    'paymentDetails': {},
-                    'auditDetails': {},
-                    'additionalDetails': {},
-                    'tenantData': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"tenantId":"","id":"","transactionNumber":"","transactionDate":1,"paymentMode":"","paymentStatus":"","payer":{"id":"","name":""},"paidBy":"","paymentDetails":{},"auditDetails":{},"additionalDetails":{},"tenantData":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.tenantId
                 outJsonPath: $.Data.tenantId
@@ -201,7 +147,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId

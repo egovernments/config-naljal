@@ -1,21 +1,20 @@
 ServiceMaps:
-  serviceName: vendor
+  serviceName: mdms-v2
   version: 1.0.0
   mappings:
-    - topic: save-vendor-application
+    - topic: create-rate-index
       configKey: INDEX
       indexes:
-        - name: vendor
-          type: vendorapplication
-          id: $.id, $.tenantId
-          isBulk: false
+        - name: rate-index-v1
+          type: Rate
+          id: $.tenantId, $.uniqueIdentifier
+          jsonPath: $
           timeStampField: $.auditDetails.createdTime
-          jsonPath: $.vendor
           customJsonMapping:
-            indexMapping: {"Data":{"vendor":{},"tenantData":{}}}
+            indexMapping: {"Data":{"rate":{},"tenantData":{}}}
             fieldMapping:
               - inJsonPath: $
-                outJsonPath: $.Data.vendor
+                outJsonPath: $.Data.rate
             mdmsMapping:
               - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
                 moduleName: tenant
@@ -29,20 +28,19 @@ ServiceMaps:
                   - inJsonPath: $.MdmsRes.tenant.tenants
                     outJsonPath: $.Data.tenantData
 
-    - topic: vendor-application-legacy-index
-      configKey: LEGACYINDEX
+    - topic: update-rate-index
+      configKey: INDEX
       indexes:
-        - name: vendor
-          type: vendorapplication
-          id: $.id, $.tenantId
-          isBulk: true
+        - name: rate-index-v1
+          type: Rate
+          id: $.tenantId, $.uniqueIdentifier
           timeStampField: $.auditDetails.createdTime
-          jsonPath: $.vendor.*
+          jsonPath: $
           customJsonMapping:
-            indexMapping: {"Data":{"vendor":{},"tenantData":{}}}
+            indexMapping: {"Data":{"rate":{},"tenantData":{}}}
             fieldMapping:
               - inJsonPath: $
-                outJsonPath: $.Data.vendor
+                outJsonPath: $.Data.rate
             mdmsMapping:
               - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
                 moduleName: tenant

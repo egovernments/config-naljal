@@ -6,8 +6,8 @@ serviceMaps:
    description: create ConnectionDetails in connection and water_service_connection
    fromTopic: save-ws-connection
    isTransaction: true
-   queryMaps: 
-    - query: INSERT INTO eg_ws_connection (id, tenantid, property_id, applicationno, applicationstatus, status, ihlDetail, sbmAccountno, schemeId, schemeName, connectionno, oldconnectionno,imisNumber, villageId,roadcuttingarea,action,roadtype, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype, dateEffectiveFrom, locality, isoldapplication,additionaldetails,previousReadingDate,arrears,paymentType,penalty,advance) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+   queryMaps:
+    - query: INSERT INTO eg_ws_connection (id, tenantid, property_id, applicationno, applicationstatus, status, ihlDetail, sbmAccountno, schemeId, schemeName, connectionno, oldconnectionno,imisNumber, villageId,roadcuttingarea,action,roadtype, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype, dateEffectiveFrom, locality, isoldapplication, isdataverified,additionaldetails,previousReadingDate,arrears,paymentType,penalty,advance) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
       basePath: $.WaterConnection
       jsonMaps:
         - jsonPath: $.WaterConnection.id 
@@ -59,6 +59,8 @@ serviceMaps:
         - jsonPath: $.WaterConnection.additionalDetails.locality
 
         - jsonPath: $.WaterConnection.oldApplication	 
+
+        - jsonPath: $.WaterConnection.dataVerified
 
         - jsonPath: $.WaterConnection.additionalDetails
           type: JSON
@@ -185,8 +187,8 @@ serviceMaps:
       basePath: $.WaterConnection
       jsonMaps:
       - jsonPath: $.WaterConnection.id
-      
-    - query: UPDATE eg_ws_connection SET applicationstatus=?, status=?, connectionno=?, ihlDetail=?, sbmAccountno=?, schemeId=?, schemeName=?, oldconnectionno=?,imisNumber=?,villageId=?, action=?, roadCuttingArea=?, roadType=?, adhocpenalty=?, adhocrebate=?, adhocpenaltyreason=?, adhocpenaltycomment=?, adhocrebatereason=?, adhocrebatecomment=?, lastModifiedBy=?, lastModifiedTime=?, dateEffectiveFrom=?, locality=?, previousReadingDate=?, isoldapplication=?, property_id=?, arrears=?, paymentType=?, penalty=?,advance=?, additionaldetails=? WHERE id=?;
+
+    - query: UPDATE eg_ws_connection SET applicationstatus=?, status=?, connectionno=?, ihlDetail=?, sbmAccountno=?, schemeId=?, schemeName=?, oldconnectionno=?,imisNumber=?,villageId=?, action=?, roadCuttingArea=?, roadType=?, adhocpenalty=?, adhocrebate=?, adhocpenaltyreason=?, adhocpenaltycomment=?, adhocrebatereason=?, adhocrebatecomment=?, lastModifiedBy=?, lastModifiedTime=?, dateEffectiveFrom=?, locality=?, previousReadingDate=?, isoldapplication=?, isdataverified=?, property_id=?, arrears=?, paymentType=?, penalty=?,advance=?, additionaldetails=? WHERE id=?;
       basePath: $.WaterConnection
       jsonMaps:
 
@@ -239,6 +241,8 @@ serviceMaps:
        - jsonPath: $.WaterConnection.previousReadingDate
 
        - jsonPath: $.WaterConnection.oldApplication
+
+       - jsonPath: $.WaterConnection.dataVerified
 
        - jsonPath: $.WaterConnection.propertyId
 

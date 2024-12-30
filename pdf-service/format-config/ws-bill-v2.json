@@ -1,5 +1,5 @@
 {
-  "key": "ws-receipt-nm",
+  "key": "ws-bill-v2",
   "config": {
     "defaultStyle": {
       "font": "Cambay",
@@ -93,7 +93,7 @@
                 "style": "receipt-table"
               },
               {
-                "text": "{{consumerID}}",
+                "text": "{{propertyID}}",
                 "border": [
                   false,
                   false,
@@ -204,7 +204,7 @@
             "25%"
           ],
           "body": [
-           
+
             [
               {
                 "text": "{{service_type}}",
@@ -229,7 +229,73 @@
             ],
             [
               {
-                "text": "{{receipt_id}}",
+                "text": "{{meter_no}}",
+                "border": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "style": "receipt-table"
+              },
+              {
+                "text": "{{meternumber}}",
+                "border": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "style": "receipt-table-value"
+              }
+            ],
+            [
+              {
+                "text": "{{meter_reading}}",
+                "border": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "style": "receipt-table"
+              },
+              {
+                "text": "{{meterreading}}",
+                "border": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "style": "receipt-table-value"
+              }
+            ],
+            [
+              {
+                "text": "{{meter_reading_date}}",
+                "border": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "style": "receipt-table"
+              },
+              {
+                "text": "{{meterreading_date}}",
+                "border": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "style": "receipt-table-value"
+              }
+            ],
+            [
+              {
+                "text": "{{bill_id}}",
                 "border": [
                   false,
                   false,
@@ -251,7 +317,7 @@
             ],
             [
               {
-                "text": "{{receipt_period}}",
+                "text": "{{bill_period}}",
                 "border": [
                   false,
                   false,
@@ -273,7 +339,7 @@
             ],
             [
               {
-                "text": "{{receipt_issue_date}}",
+                "text": "{{latest_demand_generated_date}}",
                 "border": [
                   false,
                   false,
@@ -283,7 +349,7 @@
                 "style": "receipt-table"
               },
               {
-                "text": "{{billIssueDate}}",
+                "text": "{{latestDemandGeneratedDate}}",
                 "border": [
                   false,
                   false,
@@ -291,35 +357,27 @@
                   false
                 ],
                 "style": "receipt-table-value"
-              }
-            ],
-            [
-              {
-                "text": " ",
-                "border": [
-                  false,
-                  false,
-                  false,
-                  false
-                ],
-                "style": "receipt-table-value"
-              },
-              {
-                "text": " ",
-                "border": [
-                  false,
-                  false,
-                  false,
-                  false
-                ],
-                "style": "receipt-table"
               }
             ]
           ]
         }
       },
       {
-       
+        "style": "noc-table",
+        "table": {
+          "widths": [
+            "25%",
+            "25%",
+            "25%",
+            "25%"
+          ],
+          "body": [
+            "{{#latestDemandPenaltyCreatedtimeText}}[{\"text\":\"{{latest_penalty_created_date}} \",\"border\":[false,false,false,false],\"style\":\"receipt-table\"},{\"text\":\"{{latestpenaltyCreatedDate}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table-value\"}]{{/latestDemandPenaltyCreatedtimeText}}"
+          ]
+        }
+      },
+      {
+
         "table":{
           "widths":["50%","50%"],
           "border": [
@@ -329,166 +387,188 @@
             false
           ],
           "body":[
-            [
-              {
+            [{
+              "border": [
+                false,
+                false,
+                true,
+                false
+              ],
+              "style": "noc-table",
+              "table": {
                 "border": [
                   false,
                   false,
-                  true,
+                  false,
                   false
                 ],
-                "style": "noc-table",
-                "table": {
-                  "border": [
-                    false,
-                    false,
-                    false,
-                    false
+                "widths": [
+                  "90%"
+                ],
+                "body": [
+                  [
+                    {
+                      "text": "{{breakup_pending_watercharges}} - {{consumerID}}",
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "style": "receipt-table"
+                    }
                   ],
-                  "widths": [
-                    "90%"
-                  ],
-                  "body": [
-                    [
-                      {
-                        "text": "{{breakup_pending_watercharges}} - {{consumerID}}",
-                        "border": [
-                          false,
-                          false,
-                          false,
-                          false
+                  [
+                    {
+                      "margin":[
+                        0,0,0,0
+                      ],
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "table": {
+                        "widths": [
+                          "70%",
+                          "30%"
                         ],
-                        "style": "receipt-table"
-                      }
-                    ],
-                    [
-                      {
-                        "margin":[
-                          0,0,0,0
-                        ],
-                        "border": [
-                          false,
-                          false,
-                          false,
-                          false
-                        ],
-                        "table": {
-                          "widths": [
-                            "70%",
-                            "30%"
+                        "body": [
+                          [
+                            {
+                              "text": "{{water_charges}} {{fromPeriod}}-{{toPeriod}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+                            },
+                            {
+                              "text": "₹ {{ws_charge_amt}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table-value"
+                            }
                           ],
-                          "body": [
-                            [
-                              {
-                                "text": "{{water_charges}} {{fromPeriod}}-{{toPeriod}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table"
-                              },
-                              {
-                                "text": "₹  {{current_charges_10101}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table-value"
-                              }
-                            ],
-                            [
-                              {
-                                "text": "{{current_penalty}} {{fromPeriod}}-{{toPeriod}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table"
-                              },
-                              {
-                                "text": "₹  {{current_charges_WS_TIME_PENALTY}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table-value"
-                              }
-                            ],
-                            [
-                              {
-                                "text": "{{water_arrears}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table"
-                              },
-                              {
-                                "text": "₹ {{totalArrears}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table-value"
-                              }
-                            ]
+                          [
+                            {
+                              "text": "{{water_charges_roundoff}} {{fromPeriod}}-{{toPeriod}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+                            },
+                            {
+                              "text": "₹  {{currentMonthRoundOff}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table-value"
+                            }
+                          ],                        
+                          [
+                            { "text": "{{current_penalty}} {{fromPeriod}}-{{toPeriod}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+
+                            },
+                            {
+                              "text": "₹  {{current_month_penalty}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table-value"
+
+                            }
+                          ],
+                          [
+                            {
+                              "text": "{{water_arrears}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+                            },
+                            {
+                              "text": "₹ {{totalArrear}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table-value"
+                            }
                           ]
-                        }
+                        ]
                       }
-                      
-                    ],
-                    [
-                      {
-                        "style": "noc-table5",
-                        "margin":[
-                          0,0,0,0
+                    }
+                  ],
+                  [
+                    {
+                      "style": "noc-table5",
+                      "margin":[
+                        0,0,0,0
+                      ],
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "table": {
+
+                        "widths": [
+                          "70%",
+                          "30%"
                         ],
-                        "border": [
-                          false,
-                          false,
-                          false,
-                          false
-                        ],
-                        "table": {
-                         
-                          "widths": [
-                            "70%",
-                            "30%"
-                          ],
-                          "body": ["{{#arrears}}[{\"text\":\"{{water_charges}} {{text}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table2\"},{\"text\":\"{{value}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table-value2\"}]{{/arrears}}"]
-                        }
+                        "body": ["{{#arrears}}[{\"text\":\"{{water_charges}} {{text}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table2\"},{\"text\":\"{{value}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table-value2\"}]{{/arrears}}"]
                       }
-                    ],[
-                      {
-                        "margin":[
-                          0,0,0,0
+                    }
+                  ],
+                  [
+                    {
+                      "margin":[
+                        0,0,0,0
+                      ],
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "table": {
+                        "widths": [
+                          "70%",
+                          "30%"
                         ],
-                        "border": [
-                          false,
-                          false,
-                          false,
-                          false
-                        ],
-                        "table": {
-                          "widths": [
-                            "70%",
-                            "30%"
-                          ],
-                          "body": [
-                            [
-                               {
+                        "body": [
+                          [
+                            {
                               "text": "{{total_bill_amount}}",
                               "border": [
                                 false,
@@ -509,58 +589,160 @@
                               "style": "receipt-table-value"
                             }
                           ],
-                            [
-                              {
-                                "text": "{{total_paid}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table"
-                              },
-                              {
-                                "text": "₹ {{totalPaid}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table-value"
-                              }
-                            ],[
-                              {
-                                "text": "{{due_amouont_ason}}{{ason_date}} )",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table-value"
-                              },
-                              {
-                                "text": "₹ {{dueason_date}}",
-                                "border": [
-                                  false,
-                                  false,
-                                  false,
-                                  false
-                                ],
-                                "style": "receipt-table"
-                              }
-                            ]
+                          [
+                            {
+                              "text": "{{advance_adjusted_amount}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+                            },
+                            {
+                              "text": "₹ {{advanceAdjustedAmount}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table-value"
+                            }
+                          ],
+                          [
+                            {
+                              "text": "{{net_amount_due}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+                            },
+                            {
+                              "text": "₹ {{netAmountDue}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table-value"
+                            }
                           ]
-                        }
+                        ]
                       }
-                    ]
+                    }
+                  ],
+                  [
+                    {
+                      "margin": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "table": {
+                        "widths": [
+                          "70%",
+                          "30%"
+                        ],
+                        "body": [
+                          "{{#totalApplicablePenaltyText}}[{\"text\":\"{{penalty_after_due_date}} {{penaltyDueDate}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table\"},{\"text\":\"{{value}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table-value\"}]{{/totalApplicablePenaltyText}}"
+                        ]
+                      }
+                    }
+                  ],
+                  [
+                    {
+                      "margin": [
+                        0,0,0,0
+                      ],
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "table": {
+                        "widths": [
+                          "70%",
+                          "30%"
+                        ],
+                        "body": [
+                          "{{#netAmountDueWithPenaltyText}}[{\"text\":\"{{net_amount_due_with_penalty}} {{penaltyDueDate}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table\"},{\"text\":\"{{value}}\",\"border\":[false,false,false,false],\"style\":\"receipt-table-value\"}]{{/netAmountDueWithPenaltyText}}"
+                        ]
+                      }
+                    }
+                  ],
+                  [
+                    {
+                      "margin":[
+                        0,0,0,0
+                      ],
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "table": {
+                        "widths": [
+                          "70%",
+                          "30%"
+                        ],
+                        "body": [
+                          [
+                            {
+                              "text": "{{total_due}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+                            },
+                            {
+                              "text": "₹ {{totalAmountDue}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table-value"
+                            }
+                          ],[
+                            {
+                              "colSpan":2,
+                              "text": "{{bill_note}}",
+                              "border": [
+                                false,
+                                false,
+                                false,
+                                false
+                              ],
+                              "style": "receipt-table"
+                            }
+                          ]
+                        ]
+                      }
+                    }
                   ]
-                }
-              },
+                ]
+              }
+            },
               {
-              
                 "border": [
                   true,
                   false,
@@ -578,18 +760,16 @@
                     "90%"
                   ],
                   "body": [
-                    [
-                      {
-                        "text": "{{month_summary}}   {{previousMonthYear}}",
-                        "border": [
-                          false,
-                          false,
-                          false,
-                          false
-                        ],
-                        "style": "receipt-table"
-                      }
-                    ],[
+                    [{
+                      "text": "{{month_summary}}   {{previousMonthYear}}",
+                      "border": [
+                        false,
+                        false,
+                        false,
+                        false
+                      ],
+                      "style": "receipt-table"
+                    }],[
                       {
                         "text": "{{user_feedback}} {{summary_of}} {{GPWSC}}",
                         "border": [
@@ -622,7 +802,7 @@
                             "30%"
                           ],
                           "body": [
-                           
+
                             [
                               {
                                 "text": "{{customer_rating}}",
@@ -714,7 +894,7 @@
                             "30%"
                           ],
                           "body": [
-                           
+
                             [
                               {
                                 "text": "{{collections}}",
@@ -897,8 +1077,7 @@
                     ]
                   ]
                 }
-              }
-            ]
+              }]
           ]
         }
       }

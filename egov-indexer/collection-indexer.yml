@@ -12,19 +12,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdDate
           jsonPath: $.Receipt.*
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'tenantId': '',
-                    'transactionId': '',
-                    'Bill': {},
-                    'auditDetails': {},
-                    'instrument': {},
-                    'tenantData': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"tenantId":"","transactionId":"","Bill":{},"auditDetails":{},"instrument":{},"tenantData":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.tenantId
                 outJsonPath: $.Data.tenantId
@@ -42,8 +30,8 @@ ServiceMaps:
               - path: http://mdms-v2:8080/assam/mdms-v2/v1/_search
                 moduleName: tenant
                 masterName: tenants
-                tenantId: pb
-                filter: '[?(@.code == $tenant)]'
+                tenantId: as
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
@@ -71,19 +59,7 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdDate
           jsonPath: $.Receipt.*
           customJsonMapping:
-            indexMapping:
-              {
-                'Data':
-                  {
-                    'tenantId': '',
-                    'transactionId': '',
-                    'Bill': {},
-                    'auditDetails': {},
-                    'instrument': {},
-                    'tenantData': {},
-                    '@timestamp': 'timestamp',
-                  },
-              }
+            indexMapping: {"Data":{"tenantId":"","transactionId":"","Bill":{},"auditDetails":{},"instrument":{},"tenantData":{},"@timestamp":"timestamp"}}
             fieldMapping:
               - inJsonPath: $.tenantId
                 outJsonPath: $.Data.tenantId
@@ -102,7 +78,7 @@ ServiceMaps:
                 moduleName: tenant
                 masterName: tenants
                 tenantId: as
-                filter: '[?(@.code == $tenant)]'
+                filter: "[?(@.code == $tenant)]"
                 filterMapping:
                   - variable: $tenant
                     valueJsonpath: $.tenantId
