@@ -765,7 +765,7 @@
                 ]
               },
               {
-               "path": "http:///naljal-custom-service.uat:8080/uat/naljal-custom-service/_lastMonthSummary",
+               "path": "http://naljal-custom-service.uat:8080/uat/naljal-custom-service/_lastMonthSummary",
                 "queryParam": "tenantId=$.tenantId,currentDate=$.transactionDate",
                 "apiRequest": null,
                 "responseMapping": [                  
