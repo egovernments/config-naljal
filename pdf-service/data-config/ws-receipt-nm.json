@@ -748,7 +748,7 @@
                 ]
               },
               {
-                "path": "http://ws-services.assam:8080/assam/ws-services/wc/_lastMonthSummary",
+                "path": "http://naljal-custom-service.assam:8080/assam/naljal-custom-service/_lastMonthSummary",
                 "queryParam": "tenantId=$.tenantId,currentDate=$.transactionDate",
                 "apiRequest": null,
                 "responseMapping": [
