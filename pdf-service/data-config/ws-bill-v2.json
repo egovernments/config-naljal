@@ -923,7 +923,7 @@
                 ]
               },
               {
-                "path": "http://ws-services.uat:8080/uat/ws-services/wc/_lastMonthSummary",
+                "path": "http://naljal-custom-service.uat:8080/uat/naljal-custom-service/_lastMonthSummary",
                 "queryParam": "tenantId=$.Bill[0].tenantId,currentDate=$.Bill[0].billDate",
                 "apiRequest": null,
                 "responseMapping": [
